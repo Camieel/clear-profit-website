@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — ClearProfit for Shopify</title>
+  <meta name="description" content="ClearProfit support — get help with setup, COGS, fulfillment holds, ad integrations, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --green: #00a67e; --green-dark: #007d5f; --green-light: #e6f7f2; --green-mid: #b3e8d8; --text: #111827; --text-secondary: #6b7280; --text-light: #9ca3af; --border: #e5e7eb; --bg: #ffffff; --bg-soft: #f9fafb; --bg-green: #f0fdf8; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 40px; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-size: 18px; font-weight: 800; color: var(--text); text-decoration: none; }
+    .logo span { color: var(--green); }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text); }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.15s; background: var(--green); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .btn:hover { background: var(--green-dark); }
+
+    .page-hero { padding: 72px 24px 56px; background: var(--bg-soft); border-bottom: 1px solid var(--border); text-align: center; }
+    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+    .page-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 14px; }
+    .page-hero p { font-size: 17px; color: var(--text-secondary); max-width: 440px; margin: 0 auto; }
+
+    .contact-section { max-width: 1000px; margin: 0 auto; padding: 72px 24px 0; }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 72px; }
+    @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-card { border: 1px solid var(--border); border-radius: 12px; padding: 28px; text-align: center; background: var(--bg-soft); }
+    .contact-card .icon { font-size: 32px; margin-bottom: 14px; }
+    .contact-card h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .contact-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+    .contact-card a { color: var(--green); font-weight: 600; font-size: 14px; text-decoration: none; }
+    .contact-card a:hover { text-decoration: underline; }
+
+    .faq-section { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
+    .faq-group { margin-bottom: 48px; }
+    .faq-group-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--green); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--green-mid); }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+    .faq-item h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .faq-item p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
+    .faq-item a { color: var(--green); }
+
+    footer { padding: 48px 24px 28px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-links-row { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links-row a { text-decoration: none; color: var(--text-secondary); font-size: 14px; transition: color 0.15s; }
+    .footer-links-row a:hover { color: var(--text); }
+    .footer-copy { font-size: 13px; color: var(--text-light); }
+    @media (max-width: 768px) { nav { padding: 0 20px; } .nav-links { display: none; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">Clear<span>Profit</span></a>
+    <ul class="nav-links">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="support.html" style="color:var(--green)">Support</a></li>
+    </ul>
+    <a href="https://apps.shopify.com/clearprofit" class="btn">Add to Shopify →</a>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="section-label">Support</div>
+  <h1>How can we help?</h1>
+  <p>We typically respond within one business day. Based in Amsterdam (CET timezone).</p>
+</section>
+
+<section class="contact-section">
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="icon">✉️</div>
+      <h3>Email support</h3>
+      <p>Send us your question and we'll get back to you within one business day.</p>
+      <a href="mailto:info@untapped.nl">info@untapped.nl</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon">⭐</div>
+      <h3>Leave a review</h3>
+      <p>Happy with ClearProfit? A review helps other merchants discover the app.</p>
+      <a href="https://apps.shopify.com/clearprofit/reviews">Write a review →</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon">🐛</div>
+      <h3>Report a bug</h3>
+      <p>Found something not working? Let us know and we'll fix it fast.</p>
+      <a href="mailto:info@untapped.nl?subject=Bug report — ClearProfit">Report a bug →</a>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <div class="faq-group">
+      <div class="faq-group-title">Getting started</div>
+      <div class="faq-item">
+        <h3>How do I install ClearProfit?</h3>
+        <p>Install from the Shopify App Store. ClearProfit will sync your product costs from Shopify automatically on first install. The onboarding wizard walks you through setting up transaction fees, alert thresholds, and fulfillment hold settings.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How long does the initial setup take?</h3>
+        <p>About 5 minutes. The onboarding wizard guides you through every step: COGS check, transaction fees, margin thresholds, and ad integrations.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Where does ClearProfit get my product costs?</h3>
+        <p>From Shopify's native "Cost per item" field on every product variant. If you've already filled in these fields in Shopify, ClearProfit syncs them automatically on install. You can also override costs manually or upload them via CSV on the Products page.</p>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-group-title">Fulfillment holds</div>
+      <div class="faq-item">
+        <h3>How does the automatic fulfillment hold work?</h3>
+        <p>When an order comes in, ClearProfit calculates the net profit in real time. If the margin falls below your configured threshold, it places a hold on the fulfillment order via Shopify's API — before the order is shipped. You can release or cancel the hold from the dashboard.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I set the hold threshold?</h3>
+        <p>Go to Settings → Fulfillment Hold and enter a margin percentage. For example, setting 10% means any order with a net margin below 10% will be held automatically. Set to 0 to only hold orders that are actually losing money.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I release a held order?</h3>
+        <p>Yes. Go to the Dashboard, find the order under "Held Orders", and click Release. The fulfillment hold is removed and Shopify can proceed with shipping.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if the hold doesn't apply in time?</h3>
+        <p>ClearProfit processes the order webhook within seconds of the order being placed. For most stores, the hold is applied before the fulfillment system picks it up. For very fast fulfillment workflows, contact us to discuss your setup.</p>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-group-title">COGS & profit calculation</div>
+      <div class="faq-item">
+        <h3>What costs are included in the profit calculation?</h3>
+        <p>Revenue minus: COGS (cost of goods), transaction fees (% + fixed), default shipping cost, allocated ad spend for the day, and discounts. All configurable in Settings.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What happens if a product is missing a cost price?</h3>
+        <p>The variant is counted as €0 COGS in the calculation, which inflates profit. ClearProfit marks these orders as "Incomplete" and shows a banner on the dashboard with a count of variants missing cost data. Fix them on the Products page.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I override the COGS for a specific variant?</h3>
+        <p>Yes. Go to Products, find the variant, and enter a custom cost. This override takes priority over the Shopify-synced cost and won't be overwritten by future Shopify updates.</p>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-group-title">Ad integrations</div>
+      <div class="faq-item">
+        <h3>How does ad spend allocation work?</h3>
+        <p>ClearProfit pulls your total daily ad spend from Meta, Google, and TikTok. It then allocates that spend proportionally across all orders for that day, based on each order's share of daily revenue. So if your daily revenue is $1,000 and an order is worth $100, it gets 10% of that day's ad spend.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I connect Meta Ads?</h3>
+        <p>Go to Settings → Ad Integrations → Connect Meta Ads. You'll be redirected to Facebook to authorize the connection. Select your ad account and you're done. ClearProfit will sync the last 30 days of spend automatically.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I sync ad spend manually?</h3>
+        <p>Yes. In Settings → Ad Integrations, each connected platform has a "Sync now" button that pulls the latest 30 days of spend data immediately.</p>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-group-title">Shopify Flow</div>
+      <div class="faq-item">
+        <h3>How do I use ClearProfit with Shopify Flow?</h3>
+        <p>ClearProfit adds a Flow trigger called "Order profit calculated" that fires after every order. It exposes fields like margin percentage, net profit, and whether the order is a loss. You can use these to build custom automations — for example, sending a Slack notification when margin drops below 5%.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does ClearProfit have a Flow action too?</h3>
+        <p>Yes. There's a "Hold order for review" Flow action that lets you trigger a fulfillment hold from any Flow workflow, not just margin-based ones.</p>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-group-title">Billing & cancellation</div>
+      <div class="faq-item">
+        <h3>Can I cancel my subscription?</h3>
+        <p>Yes, at any time. Go to Shopify admin → Settings → Billing → Apps, find ClearProfit, and cancel. No notice period required.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Will my data be deleted if I uninstall?</h3>
+        <p>Your data is stored securely. If you reinstall within 48 hours, all data will be intact. After 48 hours, data is permanently deleted in compliance with Shopify's GDPR requirements.</p>
+      </div>
+      <div class="faq-item">
+        <h3>I have a feature request. Where do I send it?</h3>
+        <p>Email <a href="mailto:info@untapped.nl">info@untapped.nl</a> — we read every message. Many features have come directly from merchant feedback.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© 2026 Untapped B.V. All rights reserved.</div>
+    <div class="footer-links-row">
+      <a href="/">Home</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
