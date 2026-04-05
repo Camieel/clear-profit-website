@@ -9,70 +9,57 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --green: #00a67e; --green-dark: #007d5f; --green-light: #e6f7f2; --green-mid: #b3e8d8; --text: #111827; --text-secondary: #6b7280; --text-light: #9ca3af; --border: #e5e7eb; --bg: #ffffff; --bg-soft: #f9fafb; --bg-green: #f0fdf8; }
+    :root { --green:#00a67e; --green-dark:#007d5f; --green-light:#e6f7f2; --green-mid:#b3e8d8; --text:#111827; --text-secondary:#6b7280; --text-light:#9ca3af; --border:#e5e7eb; --bg:#ffffff; --bg-soft:#f9fafb; --bg-green:#f0fdf8; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 40px; }
-    .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .logo { font-size: 18px; font-weight: 800; color: var(--text); text-decoration: none; }
-    .logo span { color: var(--green); }
-    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color 0.15s; }
-    .nav-links a:hover { color: var(--text); }
-    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.15s; cursor: pointer; border: none; font-family: 'Plus Jakarta Sans', sans-serif; }
-    .btn-primary { background: var(--green); color: #fff; }
-    .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
-
-    .page-hero { padding: 72px 24px 56px; background: var(--bg-soft); border-bottom: 1px solid var(--border); text-align: center; }
-    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
-    .page-hero h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 14px; }
-    .page-hero p { font-size: 17px; color: var(--text-secondary); max-width: 480px; margin: 0 auto; }
-
-    .pricing-section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
-    .pricing-card {
-      max-width: 520px; margin: 0 auto;
-      border: 2px solid var(--green); border-radius: 16px;
-      padding: 52px; text-align: center; background: #fff;
-      position: relative; box-shadow: 0 8px 40px rgba(0,166,126,0.12);
-    }
-    .pricing-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--green); color: #fff; font-size: 12px; font-weight: 700; padding: 4px 18px; border-radius: 100px; white-space: nowrap; }
-    .pricing-name { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 24px; }
-    .pricing-price { font-size: 80px; font-weight: 800; color: var(--text); line-height: 1; letter-spacing: -0.03em; }
-    .pricing-per { font-size: 20px; color: var(--text-secondary); font-weight: 400; }
-    .pricing-trial { background: var(--bg-green); border: 1px solid var(--green-mid); border-radius: 8px; padding: 14px 20px; margin: 28px 0; font-size: 14px; color: var(--green-dark); font-weight: 600; }
-    .pricing-list { list-style: none; text-align: left; margin: 28px 0 40px; }
-    .pricing-list li { display: flex; align-items: flex-start; gap: 10px; padding: 12px 0; font-size: 15px; color: var(--text); border-bottom: 1px solid var(--border); }
-    .pricing-list li:last-child { border-bottom: none; }
-    .ck { color: var(--green); font-weight: 700; flex-shrink: 0; font-size: 16px; margin-top: 1px; }
-    .pricing-btn { width: 100%; padding: 16px; font-size: 16px; border-radius: 10px; justify-content: center; }
-    .pricing-note { font-size: 13px; color: var(--text-light); margin-top: 16px; }
-
-    .compare-strip {
-      max-width: 700px; margin: 56px auto 0;
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-    @media (max-width: 640px) { .compare-strip { grid-template-columns: 1fr; } }
-    .compare-item { border: 1px solid var(--border); border-radius: 10px; padding: 20px; text-align: center; background: var(--bg-soft); }
-    .compare-item h4 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-    .compare-item .price { font-size: 24px; font-weight: 800; color: var(--text-secondary); }
-    .compare-item .note { font-size: 12px; color: var(--text-light); margin-top: 4px; }
-    .compare-item.us { border-color: var(--green-mid); background: var(--bg-green); }
-    .compare-item.us .price { color: var(--green); }
-
-    .faq-section { padding: 80px 24px; max-width: 720px; margin: 0 auto; }
-    .faq-section h2 { font-size: 32px; font-weight: 800; color: var(--text); margin-bottom: 40px; letter-spacing: -0.02em; }
-    .faq-item { border-bottom: 1px solid var(--border); padding: 22px 0; }
-    .faq-item h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-    .faq-item p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
-
-    footer { padding: 48px 24px 28px; border-top: 1px solid var(--border); }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-    .footer-links-row { display: flex; gap: 24px; flex-wrap: wrap; }
-    .footer-links-row a { text-decoration: none; color: var(--text-secondary); font-size: 14px; transition: color 0.15s; }
-    .footer-links-row a:hover { color: var(--text); }
-    .footer-copy { font-size: 13px; color: var(--text-light); }
-    @media (max-width: 768px) { nav { padding: 0 20px; } .nav-links { display: none; } }
+    body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 40px; }
+    .nav-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:64px; }
+    .logo { font-size:18px; font-weight:800; color:var(--text); text-decoration:none; }
+    .logo span { color:var(--green); }
+    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
+    .nav-links a { text-decoration:none; color:var(--text-secondary); font-size:14px; font-weight:500; transition:color 0.15s; }
+    .nav-links a:hover { color:var(--text); }
+    .btn { display:inline-flex; align-items:center; gap:6px; padding:10px 20px; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; transition:all 0.15s; cursor:pointer; border:none; font-family:'Plus Jakarta Sans',sans-serif; }
+    .btn-primary { background:var(--green); color:#fff; }
+    .btn-primary:hover { background:var(--green-dark); transform:translateY(-1px); }
+    .page-hero { padding:72px 24px 56px; background:var(--bg-soft); border-bottom:1px solid var(--border); text-align:center; }
+    .section-label { font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); margin-bottom:12px; }
+    .page-hero h1 { font-size:clamp(32px,5vw,56px); font-weight:800; color:var(--text); letter-spacing:-0.02em; margin-bottom:14px; }
+    .page-hero p { font-size:17px; color:var(--text-secondary); max-width:480px; margin:0 auto; }
+    .pricing-section { padding:80px 24px; max-width:1100px; margin:0 auto; }
+    .pricing-card { max-width:520px; margin:0 auto; border:2px solid var(--green); border-radius:16px; padding:52px; text-align:center; background:#fff; position:relative; box-shadow:0 8px 40px rgba(0,166,126,0.12); }
+    .pricing-badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--green); color:#fff; font-size:12px; font-weight:700; padding:4px 18px; border-radius:100px; white-space:nowrap; }
+    .pricing-name { font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); margin-bottom:24px; }
+    .pricing-price { font-size:80px; font-weight:800; color:var(--text); line-height:1; letter-spacing:-0.03em; }
+    .pricing-per { font-size:20px; color:var(--text-secondary); font-weight:400; }
+    .pricing-trial { background:var(--bg-green); border:1px solid var(--green-mid); border-radius:8px; padding:14px 20px; margin:28px 0; font-size:14px; color:var(--green-dark); font-weight:600; }
+    .pricing-list { list-style:none; text-align:left; margin:28px 0 40px; }
+    .pricing-list li { display:flex; align-items:flex-start; gap:10px; padding:12px 0; font-size:15px; color:var(--text); border-bottom:1px solid var(--border); }
+    .pricing-list li:last-child { border-bottom:none; }
+    .ck { color:var(--green); font-weight:700; flex-shrink:0; font-size:16px; margin-top:1px; }
+    .only { display:inline-flex; background:var(--green-light); color:var(--green-dark); border:1px solid var(--green-mid); font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:1px 6px; border-radius:4px; margin-left:6px; vertical-align:middle; white-space:nowrap; }
+    .pricing-btn { width:100%; padding:16px; font-size:16px; border-radius:10px; justify-content:center; }
+    .pricing-note { font-size:13px; color:var(--text-light); margin-top:16px; }
+    .compare-strip { max-width:700px; margin:56px auto 0; display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:640px){.compare-strip{grid-template-columns:1fr;}}
+    .compare-item { border:1px solid var(--border); border-radius:10px; padding:20px; text-align:center; background:var(--bg-soft); }
+    .compare-item h4 { font-size:15px; font-weight:700; color:var(--text); margin-bottom:4px; }
+    .compare-item .price { font-size:24px; font-weight:800; color:var(--text-secondary); }
+    .compare-item .note { font-size:12px; color:var(--text-light); margin-top:4px; }
+    .compare-item.us { border-color:var(--green-mid); background:var(--bg-green); }
+    .compare-item.us .price { color:var(--green); }
+    .faq-section { padding:80px 24px; max-width:720px; margin:0 auto; }
+    .faq-section h2 { font-size:32px; font-weight:800; color:var(--text); margin-bottom:40px; letter-spacing:-0.02em; }
+    .faq-item { border-bottom:1px solid var(--border); padding:22px 0; }
+    .faq-item h3 { font-size:16px; font-weight:700; color:var(--text); margin-bottom:8px; }
+    .faq-item p { font-size:14px; color:var(--text-secondary); line-height:1.7; }
+    footer { padding:48px 24px 28px; border-top:1px solid var(--border); }
+    .footer-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+    .footer-links-row { display:flex; gap:24px; flex-wrap:wrap; }
+    .footer-links-row a { text-decoration:none; color:var(--text-secondary); font-size:14px; transition:color 0.15s; }
+    .footer-links-row a:hover { color:var(--text); }
+    .footer-copy { font-size:13px; color:var(--text-light); }
+    @media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}}
   </style>
 </head>
 <body>
@@ -82,6 +69,7 @@
     <a href="/" class="logo">Clear<span>Profit</span></a>
     <ul class="nav-links">
       <li><a href="/#how-it-works">How it works</a></li>
+      <li><a href="/#action-center">Action Center</a></li>
       <li><a href="/#features">Features</a></li>
       <li><a href="pricing.html" style="color:var(--green)">Pricing</a></li>
       <li><a href="support.html">Support</a></li>
@@ -103,14 +91,15 @@
     <div class="pricing-price">$29<span class="pricing-per">/month</span></div>
     <div class="pricing-trial">🎉 14-day free trial · No credit card needed</div>
     <ul class="pricing-list">
-      <li><span class="ck">✓</span> Automatic fulfillment holds on low-margin orders</li>
-      <li><span class="ck">✓</span> Shopify Flow trigger + action (no competitor has this)</li>
+      <li><span class="ck">✓</span> <span>Automatic fulfillment holds on low-margin orders <span class="only">Only in ClearProfit</span></span></li>
+      <li><span class="ck">✓</span> <span>Loss attribution — which product, which cost, what to fix <span class="only">Only in ClearProfit</span></span></li>
+      <li><span class="ck">✓</span> <span>Shopify Flow trigger + action <span class="only">Only in ClearProfit</span></span></li>
       <li><span class="ck">✓</span> Real-time per-order profit calculation</li>
-      <li><span class="ck">✓</span> Meta Ads, Google Ads & TikTok Ads integration</li>
+      <li><span class="ck">✓</span> Meta Ads, Google Ads &amp; TikTok Ads integration</li>
       <li><span class="ck">✓</span> COGS sync from Shopify + manual override + CSV import</li>
       <li><span class="ck">✓</span> Discount cost tracking per order</li>
-      <li><span class="ck">✓</span> Email alerts — multiple addresses supported</li>
-      <li><span class="ck">✓</span> Recurring expenses P&L</li>
+      <li><span class="ck">✓</span> Email alerts + weekly P&amp;L summary (Mondays)</li>
+      <li><span class="ck">✓</span> Recurring expenses P&amp;L</li>
       <li><span class="ck">✓</span> Unlimited orders — no per-order fees</li>
       <li><span class="ck">✓</span> Customizable profit dashboard</li>
     </ul>
@@ -147,6 +136,10 @@
   <div class="faq-item">
     <h3>Are there per-order fees?</h3>
     <p>Never. $29/month covers unlimited orders. Unlike TrueProfit, we don't add surcharges when your order volume grows. The price is always $29.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What does loss attribution actually do?</h3>
+    <p>ClearProfit analyzes every unprofitable order and tells you which product is causing the most losses and which cost — ads, COGS, shipping, or fees — is the dominant factor. For example: <em>"Nike Air Max is losing money mainly due to ads (71%)."</em> No other profit app does this. It's the difference between knowing you're losing money and knowing exactly what to fix.</p>
   </div>
   <div class="faq-item">
     <h3>What happens when the trial ends?</h3>

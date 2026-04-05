@@ -4,53 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Support — ClearProfit for Shopify</title>
-  <meta name="description" content="ClearProfit support — get help with setup, COGS, fulfillment holds, ad integrations, and more.">
+  <meta name="description" content="ClearProfit support — get help with setup, COGS, fulfillment holds, ad integrations, loss attribution, and more.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --green: #00a67e; --green-dark: #007d5f; --green-light: #e6f7f2; --green-mid: #b3e8d8; --text: #111827; --text-secondary: #6b7280; --text-light: #9ca3af; --border: #e5e7eb; --bg: #ffffff; --bg-soft: #f9fafb; --bg-green: #f0fdf8; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 40px; }
-    .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .logo { font-size: 18px; font-weight: 800; color: var(--text); text-decoration: none; }
-    .logo span { color: var(--green); }
-    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color 0.15s; }
-    .nav-links a:hover { color: var(--text); }
-    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.15s; background: var(--green); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; }
-    .btn:hover { background: var(--green-dark); }
-
-    .page-hero { padding: 72px 24px 56px; background: var(--bg-soft); border-bottom: 1px solid var(--border); text-align: center; }
-    .section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
-    .page-hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 14px; }
-    .page-hero p { font-size: 17px; color: var(--text-secondary); max-width: 440px; margin: 0 auto; }
-
-    .contact-section { max-width: 1000px; margin: 0 auto; padding: 72px 24px 0; }
-    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 72px; }
-    @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
-    .contact-card { border: 1px solid var(--border); border-radius: 12px; padding: 28px; text-align: center; background: var(--bg-soft); }
-    .contact-card .icon { font-size: 32px; margin-bottom: 14px; }
-    .contact-card h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-    .contact-card p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
-    .contact-card a { color: var(--green); font-weight: 600; font-size: 14px; text-decoration: none; }
-    .contact-card a:hover { text-decoration: underline; }
-
-    .faq-section { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
-    .faq-group { margin-bottom: 48px; }
-    .faq-group-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--green); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 2px solid var(--green-mid); }
-    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
-    .faq-item h3 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
-    .faq-item p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
-    .faq-item a { color: var(--green); }
-
-    footer { padding: 48px 24px 28px; border-top: 1px solid var(--border); }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-    .footer-links-row { display: flex; gap: 24px; flex-wrap: wrap; }
-    .footer-links-row a { text-decoration: none; color: var(--text-secondary); font-size: 14px; transition: color 0.15s; }
-    .footer-links-row a:hover { color: var(--text); }
-    .footer-copy { font-size: 13px; color: var(--text-light); }
-    @media (max-width: 768px) { nav { padding: 0 20px; } .nav-links { display: none; } }
+    :root { --green:#00a67e; --green-dark:#007d5f; --green-light:#e6f7f2; --green-mid:#b3e8d8; --text:#111827; --text-secondary:#6b7280; --text-light:#9ca3af; --border:#e5e7eb; --bg:#ffffff; --bg-soft:#f9fafb; --bg-green:#f0fdf8; }
+    body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 40px; }
+    .nav-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:64px; }
+    .logo { font-size:18px; font-weight:800; color:var(--text); text-decoration:none; }
+    .logo span { color:var(--green); }
+    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
+    .nav-links a { text-decoration:none; color:var(--text-secondary); font-size:14px; font-weight:500; transition:color 0.15s; }
+    .nav-links a:hover { color:var(--text); }
+    .btn { display:inline-flex; align-items:center; gap:6px; padding:10px 20px; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; transition:all 0.15s; background:var(--green); color:#fff; font-family:'Plus Jakarta Sans',sans-serif; }
+    .btn:hover { background:var(--green-dark); }
+    .page-hero { padding:72px 24px 56px; background:var(--bg-soft); border-bottom:1px solid var(--border); text-align:center; }
+    .section-label { font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); margin-bottom:12px; }
+    .page-hero h1 { font-size:clamp(32px,5vw,52px); font-weight:800; color:var(--text); letter-spacing:-0.02em; margin-bottom:14px; }
+    .page-hero p { font-size:17px; color:var(--text-secondary); max-width:440px; margin:0 auto; }
+    .contact-section { max-width:1000px; margin:0 auto; padding:72px 24px 0; }
+    .contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:72px; }
+    @media(max-width:640px){.contact-grid{grid-template-columns:1fr;}}
+    .contact-card { border:1px solid var(--border); border-radius:12px; padding:28px; text-align:center; background:var(--bg-soft); }
+    .contact-card .icon { font-size:32px; margin-bottom:14px; }
+    .contact-card h3 { font-size:16px; font-weight:700; color:var(--text); margin-bottom:8px; }
+    .contact-card p { font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:16px; }
+    .contact-card a { color:var(--green); font-weight:600; font-size:14px; text-decoration:none; }
+    .contact-card a:hover { text-decoration:underline; }
+    .faq-section { max-width:760px; margin:0 auto; padding:0 24px 80px; }
+    .faq-group { margin-bottom:48px; }
+    .faq-group-title { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--green); margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--green-mid); }
+    .faq-item { border-bottom:1px solid var(--border); padding:20px 0; }
+    .faq-item h3 { font-size:16px; font-weight:700; color:var(--text); margin-bottom:8px; }
+    .faq-item p { font-size:14px; color:var(--text-secondary); line-height:1.7; }
+    .faq-item a { color:var(--green); }
+    footer { padding:48px 24px 28px; border-top:1px solid var(--border); }
+    .footer-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+    .footer-links-row { display:flex; gap:24px; flex-wrap:wrap; }
+    .footer-links-row a { text-decoration:none; color:var(--text-secondary); font-size:14px; transition:color 0.15s; }
+    .footer-links-row a:hover { color:var(--text); }
+    .footer-copy { font-size:13px; color:var(--text-light); }
+    @media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}}
   </style>
 </head>
 <body>
@@ -60,6 +56,7 @@
     <a href="/" class="logo">Clear<span>Profit</span></a>
     <ul class="nav-links">
       <li><a href="/#features">Features</a></li>
+      <li><a href="/#action-center">Action Center</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="support.html" style="color:var(--green)">Support</a></li>
     </ul>
@@ -113,6 +110,26 @@
     </div>
 
     <div class="faq-group">
+      <div class="faq-group-title">Action Center &amp; loss attribution</div>
+      <div class="faq-item">
+        <h3>What is the Action Center?</h3>
+        <p>The Action Center is the main section of your ClearProfit dashboard. Instead of showing you raw numbers, it tells you what to fix — sorted by profit impact. Each item shows which product is causing the most losses, which cost is dominant (ads, COGS, shipping, or fees), the total loss amount, and an estimated amount you could recover if fixed.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does loss attribution work?</h3>
+        <p>ClearProfit analyzes every unprofitable order and calculates how much each cost type contributed to the loss — proportionally, not as flat totals. For example, if ads account for 71% of total costs on a loss order, ads get 71% of the loss attribution. This is then aggregated across all loss orders for the week, and the dominant cost source is identified per product. The result is a specific, actionable insight: <em>"Nike Air Max is losing money mainly due to ads (71%)."</em></p>
+      </div>
+      <div class="faq-item">
+        <h3>Why does the Action Center show "Low confidence"?</h3>
+        <p>Confidence is based on the number of data points. If you only have 1–2 loss orders for a product, the attribution might not be reliable yet. High confidence requires 3+ orders showing the same pattern. Low confidence items still appear — they're just labeled so you know to treat them as early signals, not confirmed root causes.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I dismiss Action Center items?</h3>
+        <p>Yes. Each item has a "Snooze 24h" button. The item disappears for 24 hours and reappears the next day if the underlying issue persists. This is useful if you're already aware of an issue and working on fixing it.</p>
+      </div>
+    </div>
+
+    <div class="faq-group">
       <div class="faq-group-title">Fulfillment holds</div>
       <div class="faq-item">
         <h3>How does the automatic fulfillment hold work?</h3>
@@ -133,18 +150,30 @@
     </div>
 
     <div class="faq-group">
-      <div class="faq-group-title">COGS & profit calculation</div>
+      <div class="faq-group-title">COGS &amp; profit calculation</div>
       <div class="faq-item">
         <h3>What costs are included in the profit calculation?</h3>
-        <p>Revenue minus: COGS (cost of goods), transaction fees (% + fixed), default shipping cost, allocated ad spend for the day, and discounts. All configurable in Settings.</p>
+        <p>Revenue minus: COGS (cost of goods), transaction fees (% + fixed), shipping cost, allocated ad spend for the day, discounts, and recurring expenses. All configurable in Settings.</p>
       </div>
       <div class="faq-item">
         <h3>What happens if a product is missing a cost price?</h3>
-        <p>The variant is counted as €0 COGS in the calculation, which inflates profit. ClearProfit marks these orders as "Incomplete" and shows a banner on the dashboard with a count of variants missing cost data. Fix them on the Products page.</p>
+        <p>The variant is counted as €0 COGS in the calculation, which inflates profit. ClearProfit flags these in the Action Center as a "Data health" item, shows the estimated impact on profit accuracy, and links directly to the Products page to fix them.</p>
       </div>
       <div class="faq-item">
         <h3>Can I override the COGS for a specific variant?</h3>
         <p>Yes. Go to Products, find the variant, and enter a custom cost. This override takes priority over the Shopify-synced cost and won't be overwritten by future Shopify updates.</p>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-group-title">Alerts &amp; weekly P&amp;L</div>
+      <div class="faq-item">
+        <h3>When do I receive email alerts?</h3>
+        <p>Immediately when an order falls below your configured margin threshold. The email includes the order name, revenue, net profit, and a breakdown of the main cost drivers. You can add multiple email addresses in Settings → Alerts.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the weekly P&amp;L summary?</h3>
+        <p>Every Monday morning, ClearProfit sends a summary of the previous week: total revenue, net profit, average margin, number of unprofitable orders, and your top 3 loss orders. It's designed to land in your inbox before you open your dashboard — so you already know what to focus on.</p>
       </div>
     </div>
 
@@ -177,7 +206,7 @@
     </div>
 
     <div class="faq-group">
-      <div class="faq-group-title">Billing & cancellation</div>
+      <div class="faq-group-title">Billing &amp; cancellation</div>
       <div class="faq-item">
         <h3>Can I cancel my subscription?</h3>
         <p>Yes, at any time. Go to Shopify admin → Settings → Billing → Apps, find ClearProfit, and cancel. No notice period required.</p>

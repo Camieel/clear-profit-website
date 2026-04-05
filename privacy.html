@@ -8,41 +8,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --green: #00a67e; --green-dark: #007d5f; --green-light: #e6f7f2; --green-mid: #b3e8d8; --text: #111827; --text-secondary: #6b7280; --text-light: #9ca3af; --border: #e5e7eb; --bg: #ffffff; --bg-soft: #f9fafb; --bg-green: #f0fdf8; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-    nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 40px; }
-    .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
-    .logo { font-size: 18px; font-weight: 800; color: var(--text); text-decoration: none; }
-    .logo span { color: var(--green); }
-    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--text-secondary); font-size: 14px; font-weight: 500; transition: color 0.15s; }
-    .nav-links a:hover { color: var(--text); }
-    .btn { display: inline-flex; padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.15s; background: var(--green); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; }
-    .btn:hover { background: var(--green-dark); }
-
-    .page-hero { padding: 64px 24px 48px; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
-    .page-hero-inner { max-width: 760px; margin: 0 auto; }
-    .page-hero h1 { font-size: 40px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px; }
-    .page-hero p { font-size: 14px; color: var(--text-secondary); }
-
-    .content { max-width: 760px; margin: 0 auto; padding: 60px 24px 80px; }
-    .highlight { background: var(--bg-green); border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; padding: 16px 20px; margin-bottom: 40px; font-size: 14px; color: var(--text); line-height: 1.7; }
-    .content h2 { font-size: 20px; font-weight: 700; color: var(--text); margin: 40px 0 12px; }
-    .content h2:first-of-type { margin-top: 0; }
-    .content p { font-size: 15px; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.75; }
-    .content ul { margin: 0 0 16px 20px; }
-    .content li { font-size: 15px; color: var(--text-secondary); margin-bottom: 8px; line-height: 1.6; }
-    .content a { color: var(--green); text-decoration: none; }
-    .content a:hover { text-decoration: underline; }
-    .content strong { color: var(--text); font-weight: 600; }
-
-    footer { padding: 48px 24px 28px; border-top: 1px solid var(--border); }
-    .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-    .footer-links-row { display: flex; gap: 24px; flex-wrap: wrap; }
-    .footer-links-row a { text-decoration: none; color: var(--text-secondary); font-size: 14px; transition: color 0.15s; }
-    .footer-links-row a:hover { color: var(--text); }
-    .footer-copy { font-size: 13px; color: var(--text-light); }
-    @media (max-width: 768px) { nav { padding: 0 20px; } .nav-links { display: none; } }
+    :root { --green:#00a67e; --green-dark:#007d5f; --green-light:#e6f7f2; --green-mid:#b3e8d8; --text:#111827; --text-secondary:#6b7280; --text-light:#9ca3af; --border:#e5e7eb; --bg:#ffffff; --bg-soft:#f9fafb; --bg-green:#f0fdf8; }
+    body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 40px; }
+    .nav-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:64px; }
+    .logo { font-size:18px; font-weight:800; color:var(--text); text-decoration:none; }
+    .logo span { color:var(--green); }
+    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
+    .nav-links a { text-decoration:none; color:var(--text-secondary); font-size:14px; font-weight:500; transition:color 0.15s; }
+    .nav-links a:hover { color:var(--text); }
+    .btn { display:inline-flex; padding:10px 20px; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; transition:all 0.15s; background:var(--green); color:#fff; font-family:'Plus Jakarta Sans',sans-serif; }
+    .btn:hover { background:var(--green-dark); }
+    .page-hero { padding:64px 24px 48px; background:var(--bg-soft); border-bottom:1px solid var(--border); }
+    .page-hero-inner { max-width:760px; margin:0 auto; }
+    .page-hero h1 { font-size:40px; font-weight:800; color:var(--text); letter-spacing:-0.02em; margin-bottom:8px; }
+    .page-hero p { font-size:14px; color:var(--text-secondary); }
+    .content { max-width:760px; margin:0 auto; padding:60px 24px 80px; }
+    .highlight { background:var(--bg-green); border-left:3px solid var(--green); border-radius:0 8px 8px 0; padding:16px 20px; margin-bottom:40px; font-size:14px; color:var(--text); line-height:1.7; }
+    .content h2 { font-size:20px; font-weight:700; color:var(--text); margin:40px 0 12px; }
+    .content h2:first-of-type { margin-top:0; }
+    .content p { font-size:15px; color:var(--text-secondary); margin-bottom:16px; line-height:1.75; }
+    .content ul { margin:0 0 16px 20px; }
+    .content li { font-size:15px; color:var(--text-secondary); margin-bottom:8px; line-height:1.6; }
+    .content a { color:var(--green); text-decoration:none; }
+    .content a:hover { text-decoration:underline; }
+    .content strong { color:var(--text); font-weight:600; }
+    footer { padding:48px 24px 28px; border-top:1px solid var(--border); }
+    .footer-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+    .footer-links-row { display:flex; gap:24px; flex-wrap:wrap; }
+    .footer-links-row a { text-decoration:none; color:var(--text-secondary); font-size:14px; transition:color 0.15s; }
+    .footer-links-row a:hover { color:var(--text); }
+    .footer-copy { font-size:13px; color:var(--text-light); }
+    @media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}}
   </style>
 </head>
 <body>
@@ -52,6 +49,7 @@
     <a href="/" class="logo">Clear<span>Profit</span></a>
     <ul class="nav-links">
       <li><a href="/#features">Features</a></li>
+      <li><a href="/#action-center">Action Center</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="support.html">Support</a></li>
     </ul>
@@ -95,6 +93,7 @@
     <li>Trigger and manage fulfillment holds via Shopify's API</li>
     <li>Allocate daily ad spend proportionally across orders</li>
     <li>Send alert emails when orders fall below your margin threshold</li>
+    <li>Send a weekly P&amp;L summary email to your configured alert address(es) every Monday</li>
     <li>Display profit trends and summaries in your dashboard</li>
     <li>Manage your subscription via Shopify Billing</li>
   </ul>
@@ -137,6 +136,7 @@
     <li><strong>Railway:</strong> App hosting (railway.app) — United States</li>
     <li><strong>Neon:</strong> Database hosting — AWS eu-central-1, Frankfurt (neon.tech)</li>
     <li><strong>Shopify:</strong> Authentication and billing</li>
+    <li><strong>Resend:</strong> Transactional email delivery — alert emails and weekly P&amp;L summaries (resend.com)</li>
     <li><strong>Meta, Google, TikTok:</strong> Ad spend data (only when you connect these integrations)</li>
   </ul>
 
