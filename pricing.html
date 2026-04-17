@@ -1,175 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing — ClearProfit for Shopify</title>
-  <meta name="description" content="ClearProfit costs $29/month flat — unlimited orders, no per-order fees, all features included. 14-day free trial.">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — ProfitGuard for Shopify</title>
+  <meta name="description" content="ProfitGuard costs $29/month flat — unlimited orders, no per-order fees, all features included. 14-day free trial.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --green:#00a67e; --green-dark:#007d5f; --green-light:#e6f7f2; --green-mid:#b3e8d8; --text:#111827; --text-secondary:#6b7280; --text-light:#9ca3af; --border:#e5e7eb; --bg:#ffffff; --bg-soft:#f9fafb; --bg-green:#f0fdf8; }
-    html { scroll-behavior: smooth; }
-    body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; }
-    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 40px; }
-    .nav-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:64px; }
-    .logo { font-size:18px; font-weight:800; color:var(--text); text-decoration:none; }
-    .logo span { color:var(--green); }
-    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
-    .nav-links a { text-decoration:none; color:var(--text-secondary); font-size:14px; font-weight:500; transition:color 0.15s; }
-    .nav-links a:hover { color:var(--text); }
-    .btn { display:inline-flex; align-items:center; gap:6px; padding:10px 20px; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; transition:all 0.15s; cursor:pointer; border:none; font-family:'Plus Jakarta Sans',sans-serif; }
-    .btn-primary { background:var(--green); color:#fff; }
-    .btn-primary:hover { background:var(--green-dark); transform:translateY(-1px); }
-    .page-hero { padding:72px 24px 56px; background:var(--bg-soft); border-bottom:1px solid var(--border); text-align:center; }
-    .section-label { font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); margin-bottom:12px; }
-    .page-hero h1 { font-size:clamp(32px,5vw,56px); font-weight:800; color:var(--text); letter-spacing:-0.02em; margin-bottom:14px; }
-    .page-hero p { font-size:17px; color:var(--text-secondary); max-width:480px; margin:0 auto; }
-    .pricing-section { padding:80px 24px; max-width:1100px; margin:0 auto; }
-    .pricing-card { max-width:520px; margin:0 auto; border:2px solid var(--green); border-radius:16px; padding:52px; text-align:center; background:#fff; position:relative; box-shadow:0 8px 40px rgba(0,166,126,0.12); }
-    .pricing-badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:var(--green); color:#fff; font-size:12px; font-weight:700; padding:4px 18px; border-radius:100px; white-space:nowrap; }
-    .pricing-name { font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); margin-bottom:24px; }
-    .pricing-price { font-size:80px; font-weight:800; color:var(--text); line-height:1; letter-spacing:-0.03em; }
-    .pricing-per { font-size:20px; color:var(--text-secondary); font-weight:400; }
-    .pricing-trial { background:var(--bg-green); border:1px solid var(--green-mid); border-radius:8px; padding:14px 20px; margin:28px 0; font-size:14px; color:var(--green-dark); font-weight:600; }
-    .pricing-list { list-style:none; text-align:left; margin:28px 0 40px; }
-    .pricing-list li { display:flex; align-items:flex-start; gap:10px; padding:12px 0; font-size:15px; color:var(--text); border-bottom:1px solid var(--border); }
-    .pricing-list li:last-child { border-bottom:none; }
-    .ck { color:var(--green); font-weight:700; flex-shrink:0; font-size:16px; margin-top:1px; }
-    .only { display:inline-flex; background:var(--green-light); color:var(--green-dark); border:1px solid var(--green-mid); font-size:10px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:1px 6px; border-radius:4px; margin-left:6px; vertical-align:middle; white-space:nowrap; }
-    .pricing-btn { width:100%; padding:16px; font-size:16px; border-radius:10px; justify-content:center; }
-    .pricing-note { font-size:13px; color:var(--text-light); margin-top:16px; }
-    .compare-strip { max-width:700px; margin:56px auto 0; display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-    @media(max-width:640px){.compare-strip{grid-template-columns:1fr;}}
-    .compare-item { border:1px solid var(--border); border-radius:10px; padding:20px; text-align:center; background:var(--bg-soft); }
-    .compare-item h4 { font-size:15px; font-weight:700; color:var(--text); margin-bottom:4px; }
-    .compare-item .price { font-size:24px; font-weight:800; color:var(--text-secondary); }
-    .compare-item .note { font-size:12px; color:var(--text-light); margin-top:4px; }
-    .compare-item.us { border-color:var(--green-mid); background:var(--bg-green); }
-    .compare-item.us .price { color:var(--green); }
-    .faq-section { padding:80px 24px; max-width:720px; margin:0 auto; }
-    .faq-section h2 { font-size:32px; font-weight:800; color:var(--text); margin-bottom:40px; letter-spacing:-0.02em; }
-    .faq-item { border-bottom:1px solid var(--border); padding:22px 0; }
-    .faq-item h3 { font-size:16px; font-weight:700; color:var(--text); margin-bottom:8px; }
-    .faq-item p { font-size:14px; color:var(--text-secondary); line-height:1.7; }
-    footer { padding:48px 24px 28px; border-top:1px solid var(--border); }
-    .footer-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-    .footer-links-row { display:flex; gap:24px; flex-wrap:wrap; }
-    .footer-links-row a { text-decoration:none; color:var(--text-secondary); font-size:14px; transition:color 0.15s; }
-    .footer-links-row a:hover { color:var(--text); }
-    .footer-copy { font-size:13px; color:var(--text-light); }
-    @media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--g:#00a67e;--gd:#007d5f;--gl:#e8f9f3;--gm:#a8e8d4;--gg:rgba(0,166,126,.15);--red:#e53e3e;--t:#111827;--t2:#374151;--tm:#6b7280;--tl:#9ca3af;--b:#e5e7eb;--bg:#fff;--bs:#f9fafb;--bgreen:#f0fdf8;--ss:0 1px 3px rgba(0,0,0,.08);--s:0 4px 16px rgba(0,0,0,.08);--sl:0 20px 48px rgba(0,0,0,.1);--fd:'Outfit',sans-serif;--fb:'Instrument Sans',sans-serif}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--fb);background:var(--bg);color:var(--t);line-height:1.6;-webkit-font-smoothing:antialiased}
+    nav{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--b)}
+    .nav-i{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:var(--fd);font-size:20px;font-weight:800;color:var(--t);text-decoration:none;letter-spacing:-.5px;display:flex;align-items:center;gap:9px}
+    .ls{width:30px;height:30px;background:var(--g);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 8px var(--gg)}
+    .logo em{color:var(--g);font-style:normal}
+    .nl{display:flex;align-items:center;gap:28px;list-style:none}
+    .nl a{text-decoration:none;color:var(--tm);font-size:14px;font-weight:500;transition:color .15s}
+    .nl a:hover,.nl a.act{color:var(--t)}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all .18s;cursor:pointer;border:none;font-family:var(--fb)}
+    .bp{background:var(--g);color:#fff;box-shadow:0 2px 8px var(--gg)}
+    .bp:hover{background:var(--gd);transform:translateY(-1px)}
+    .bg2{color:var(--tm);background:transparent;border:1px solid var(--b)}
+    .bg2:hover{color:var(--t);background:var(--bs)}
+    .hero{padding:72px 24px 56px;text-align:center;background:linear-gradient(180deg,var(--bgreen) 0%,#fff 60%);border-bottom:1px solid var(--b)}
+    .seclbl{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:12px}
+    h1{font-family:var(--fd);font-size:clamp(32px,5vw,56px);font-weight:900;color:var(--t);letter-spacing:-.03em;margin-bottom:14px}
+    .hero p{font-size:17px;color:var(--tm);max-width:480px;margin:0 auto}
+    .wrap{padding:80px 24px;max-width:1160px;margin:0 auto}
+    .pcrd{max-width:520px;margin:0 auto;border:2px solid var(--g);border-radius:20px;padding:52px;text-align:center;background:#fff;position:relative;box-shadow:0 0 0 6px var(--gl),var(--sl)}
+    .pbadge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--g);color:#fff;font-size:11px;font-weight:800;padding:5px 18px;border-radius:100px;white-space:nowrap;letter-spacing:.05em;text-transform:uppercase}
+    .pname{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-bottom:24px}
+    .pprice{font-family:var(--fd);font-size:80px;font-weight:900;color:var(--t);line-height:1;letter-spacing:-.04em}
+    .pper{font-size:20px;color:var(--tm);font-weight:400}
+    .ptrial{background:var(--bgreen);border:1px solid var(--gm);border-radius:8px;padding:13px 20px;margin:28px 0;font-size:14px;color:var(--gd);font-weight:600}
+    .plist{list-style:none;text-align:left;margin:28px 0 40px}
+    .plist li{display:flex;align-items:flex-start;gap:11px;padding:11px 0;font-size:14px;color:var(--t2);border-bottom:1px solid var(--b)}
+    .plist li:last-child{border-bottom:none}
+    .ck{color:var(--g);font-weight:700;flex-shrink:0;font-size:15px;margin-top:1px}
+    .only{display:inline-flex;background:var(--gl);color:var(--gd);border:1px solid var(--gm);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:1px 6px;border-radius:4px;margin-left:5px;vertical-align:middle;white-space:nowrap}
+    .pbtn{width:100%;padding:16px;font-size:15px;border-radius:10px;justify-content:center}
+    .pnote{font-size:12px;color:var(--tl);margin-top:14px}
+    .cstrip{max-width:700px;margin:56px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media(max-width:640px){.cstrip{grid-template-columns:1fr}}
+    .cs{border:1px solid var(--b);border-radius:12px;padding:22px;text-align:center;background:var(--bs)}
+    .cs h4{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--t2);margin-bottom:4px}
+    .cs .cp{font-family:var(--fd);font-size:26px;font-weight:800;color:var(--tm)}
+    .cs .cn{font-size:12px;color:var(--tl);margin-top:4px}
+    .cs.us{border-color:var(--gm);background:var(--bgreen)}
+    .cs.us .cp{color:var(--g)}
+    .faq{padding:0 24px 80px;max-width:760px;margin:0 auto}
+    .faq h2{font-family:var(--fd);font-size:32px;font-weight:800;color:var(--t);margin-bottom:44px;letter-spacing:-.02em}
+    .faqitem{border-bottom:1px solid var(--b);padding:22px 0}
+    .faqitem h3{font-size:16px;font-weight:600;color:var(--t);margin-bottom:8px}
+    .faqitem p{font-size:14px;color:var(--tm);line-height:1.75}
+    .faqitem a{color:var(--g);text-decoration:none}
+    footer{padding:48px 24px 28px;border-top:1px solid var(--b)}
+    .fi{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .flr{display:flex;gap:24px;flex-wrap:wrap}
+    .flr a{text-decoration:none;color:var(--tm);font-size:14px;transition:color .15s}
+    .flr a:hover{color:var(--t)}
+    .fcopy{font-size:13px;color:var(--tl)}
+    @media(max-width:768px){nav{padding:0 16px}.nl{display:none}}
   </style>
 </head>
 <body>
-
 <nav>
-  <div class="nav-inner">
-    <a href="/" class="logo">Clear<span>Profit</span></a>
-    <ul class="nav-links">
+  <div class="nav-i">
+    <a href="/" class="logo"><div class="ls">🛡</div>Profit<em>Guard</em></a>
+    <ul class="nl">
       <li><a href="/#how-it-works">How it works</a></li>
       <li><a href="/#action-center">Action Center</a></li>
       <li><a href="/#features">Features</a></li>
-      <li><a href="pricing.html" style="color:var(--green)">Pricing</a></li>
+      <li><a href="pricing.html" class="act" style="color:var(--g)">Pricing</a></li>
       <li><a href="support.html">Support</a></li>
     </ul>
-    <a href="https://apps.shopify.com/clearprofit" class="btn btn-primary">Add to Shopify →</a>
+    <div style="display:flex;gap:10px">
+      <a href="support.html" class="btn bg2">Talk to us</a>
+      <a href="https://apps.shopify.com/profitguard" class="btn bp">Add to Shopify →</a>
+    </div>
   </div>
 </nav>
 
-<section class="page-hero">
-  <div class="section-label">Pricing</div>
+<section class="hero">
+  <div class="seclbl">Pricing</div>
   <h1>Simple, honest pricing</h1>
   <p>One plan, all features included. Try free for 14 days — no credit card required. No per-order fees, ever.</p>
 </section>
 
-<section class="pricing-section">
-  <div class="pricing-card">
-    <span class="pricing-badge">Everything included</span>
-    <div class="pricing-name">ClearProfit — All Features</div>
-    <div class="pricing-price">$29<span class="pricing-per">/month</span></div>
-    <div class="pricing-trial">🎉 14-day free trial · No credit card needed</div>
-    <ul class="pricing-list">
-      <li><span class="ck">✓</span> <span>Automatic fulfillment holds on low-margin orders <span class="only">Only in ClearProfit</span></span></li>
-      <li><span class="ck">✓</span> <span>Loss attribution — which product, which cost, what to fix <span class="only">Only in ClearProfit</span></span></li>
-      <li><span class="ck">✓</span> <span>Shopify Flow trigger + action <span class="only">Only in ClearProfit</span></span></li>
-      <li><span class="ck">✓</span> Real-time per-order profit calculation</li>
-      <li><span class="ck">✓</span> Meta Ads, Google Ads &amp; TikTok Ads integration</li>
-      <li><span class="ck">✓</span> COGS sync from Shopify + manual override + CSV import</li>
-      <li><span class="ck">✓</span> Discount cost tracking per order</li>
-      <li><span class="ck">✓</span> Email alerts + weekly P&amp;L summary (Mondays)</li>
-      <li><span class="ck">✓</span> Recurring expenses P&amp;L</li>
-      <li><span class="ck">✓</span> Unlimited orders — no per-order fees</li>
-      <li><span class="ck">✓</span> Customizable profit dashboard</li>
+<div class="wrap">
+  <div class="pcrd">
+    <span class="pbadge">Everything included</span>
+    <div class="pname">ProfitGuard — All Features</div>
+    <div class="pprice">$29<span class="pper">/month</span></div>
+    <div class="ptrial">🎉 14-day free trial · No credit card needed</div>
+    <ul class="plist">
+      <li><span class="ck">✓</span><span>Automatic fulfillment holds on low-margin orders <span class="only">Only in ProfitGuard</span></span></li>
+      <li><span class="ck">✓</span><span>Loss attribution — which product, which cost, what to fix <span class="only">Only in ProfitGuard</span></span></li>
+      <li><span class="ck">✓</span><span>Shopify Flow trigger + action <span class="only">Only in ProfitGuard</span></span></li>
+      <li><span class="ck">✓</span>Real-time per-order profit calculation (webhook-based)</li>
+      <li><span class="ck">✓</span>Meta Ads, Google Ads & TikTok Ads integration via OAuth</li>
+      <li><span class="ck">✓</span>COGS sync from Shopify + manual override + CSV import</li>
+      <li><span class="ck">✓</span>Discount cost tracking + refund auto-adjustment</li>
+      <li><span class="ck">✓</span>Recurring expenses with daily pro-rating</li>
+      <li><span class="ck">✓</span>Email alerts + weekly P&L summary (Mondays)</li>
+      <li><span class="ck">✓</span>Unlimited orders — no per-order fees</li>
+      <li><span class="ck">✓</span>Customisable profit dashboard</li>
     </ul>
-    <a href="https://apps.shopify.com/clearprofit" class="btn btn-primary pricing-btn">Start free trial →</a>
-    <p class="pricing-note">Billed monthly via Shopify Billing. Cancel anytime from your Shopify admin.</p>
+    <a href="https://apps.shopify.com/profitguard" class="btn bp pbtn">Start tracking my profit →</a>
+    <p class="pnote">Billed monthly via Shopify Billing. Cancel anytime from your Shopify admin.</p>
   </div>
-
-  <div class="compare-strip">
-    <div class="compare-item us">
-      <h4>ClearProfit</h4>
-      <div class="price">$29</div>
-      <div class="note">Flat · Unlimited orders</div>
-    </div>
-    <div class="compare-item">
-      <h4>TrueProfit</h4>
-      <div class="price">$35+</div>
-      <div class="note">+ per-order surcharges</div>
-    </div>
-    <div class="compare-item">
-      <h4>Lifetimely</h4>
-      <div class="price">$149</div>
-      <div class="note">Entry paid plan</div>
-    </div>
+  <div class="cstrip">
+    <div class="cs us"><h4>ProfitGuard</h4><div class="cp">$29</div><div class="cn">Flat · Unlimited orders</div></div>
+    <div class="cs"><h4>TrueProfit</h4><div class="cp">$35+</div><div class="cn">+ per-order surcharges</div></div>
+    <div class="cs"><h4>Lifetimely</h4><div class="cp">$149</div><div class="cn">Entry paid plan</div></div>
   </div>
-</section>
+</div>
 
-<section class="faq-section">
+<div class="faq">
   <h2>Frequently asked questions</h2>
-
-  <div class="faq-item">
-    <h3>Do I need a credit card to start the trial?</h3>
-    <p>No. Install ClearProfit and use all features free for 14 days with no payment required. After the trial, you'll be prompted to subscribe to keep using the app.</p>
-  </div>
-  <div class="faq-item">
-    <h3>Are there per-order fees?</h3>
-    <p>Never. $29/month covers unlimited orders. Unlike TrueProfit, we don't add surcharges when your order volume grows. The price is always $29.</p>
-  </div>
-  <div class="faq-item">
-    <h3>What does loss attribution actually do?</h3>
-    <p>ClearProfit analyzes every unprofitable order and tells you which product is causing the most losses and which cost — ads, COGS, shipping, or fees — is the dominant factor. For example: <em>"Nike Air Max is losing money mainly due to ads (71%)."</em> No other profit app does this. It's the difference between knowing you're losing money and knowing exactly what to fix.</p>
-  </div>
-  <div class="faq-item">
-    <h3>What happens when the trial ends?</h3>
-    <p>After 14 days, the app stops processing new orders until you subscribe. Your existing data is kept safe — nothing is deleted.</p>
-  </div>
-  <div class="faq-item">
-    <h3>How is billing handled?</h3>
-    <p>Through Shopify's native billing system, the same place you manage all your other app subscriptions. It appears on your Shopify invoice.</p>
-  </div>
-  <div class="faq-item">
-    <h3>Can I cancel anytime?</h3>
-    <p>Yes. Cancel from your Shopify admin under Settings → Billing → Apps. No notice period, no cancellation fees.</p>
-  </div>
-  <div class="faq-item">
-    <h3>Is there a plan for larger stores?</h3>
-    <p>The $29 plan covers unlimited orders and is suitable for stores at any size. If you have specific enterprise requirements, contact us at info@untapped.nl.</p>
-  </div>
-</section>
+  <div class="faqitem"><h3>Do I need a credit card to start the trial?</h3><p>No. Install ProfitGuard and use all features free for 14 days with no payment required. After the trial, you'll be prompted to subscribe to keep using the app.</p></div>
+  <div class="faqitem"><h3>Are there per-order fees?</h3><p>Never. $29/month covers unlimited orders. Unlike TrueProfit, we don't add surcharges when your order volume grows. The price is always $29.</p></div>
+  <div class="faqitem"><h3>What does loss attribution actually do?</h3><p>ProfitGuard analyses every unprofitable order and tells you which product is causing the most losses and which cost — ads, COGS, shipping, or fees — is the dominant factor. For example: <em>"Jordan 1 Retro is losing money mainly due to product cost (97%)."</em> No other profit app does this.</p></div>
+  <div class="faqitem"><h3>What happens when the trial ends?</h3><p>After 14 days, the app stops processing new orders until you subscribe. Your existing data is kept safe — nothing is deleted.</p></div>
+  <div class="faqitem"><h3>How is billing handled?</h3><p>Through Shopify's native billing system, the same place you manage all your other app subscriptions. It appears on your Shopify invoice.</p></div>
+  <div class="faqitem"><h3>Can I cancel anytime?</h3><p>Yes. Cancel from your Shopify admin under Settings → Billing → Apps. No notice period, no cancellation fees.</p></div>
+  <div class="faqitem"><h3>Is there a plan for larger stores?</h3><p>The $29 plan covers unlimited orders and is suitable for stores at any size. If you have specific enterprise requirements, contact us at <a href="mailto:info@untapped.nl">info@untapped.nl</a>.</p></div>
+  <div class="faqitem"><h3>What's your money-back guarantee?</h3><p>If ProfitGuard doesn't find at least one unprofitable product in your first 30 days, email <a href="mailto:info@untapped.nl">info@untapped.nl</a> and you'll get a full refund. No questions asked.</p></div>
+</div>
 
 <footer>
-  <div class="footer-inner">
-    <div class="footer-copy">© 2026 Untapped B.V. All rights reserved.</div>
-    <div class="footer-links-row">
-      <a href="/">Home</a>
-      <a href="support.html">Support</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-    </div>
+  <div class="fi">
+    <div class="fcopy">© 2026 Untapped B.V. All rights reserved.</div>
+    <div class="flr"><a href="/">Home</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
   </div>
 </footer>
-
 </body>
 </html>

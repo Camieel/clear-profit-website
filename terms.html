@@ -1,148 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service — ClearProfit for Shopify</title>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — ProfitGuard for Shopify</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --green:#00a67e; --green-dark:#007d5f; --green-light:#e6f7f2; --green-mid:#b3e8d8; --text:#111827; --text-secondary:#6b7280; --text-light:#9ca3af; --border:#e5e7eb; --bg:#ffffff; --bg-soft:#f9fafb; --bg-green:#f0fdf8; }
-    body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; }
-    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 40px; }
-    .nav-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:64px; }
-    .logo { font-size:18px; font-weight:800; color:var(--text); text-decoration:none; }
-    .logo span { color:var(--green); }
-    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
-    .nav-links a { text-decoration:none; color:var(--text-secondary); font-size:14px; font-weight:500; transition:color 0.15s; }
-    .nav-links a:hover { color:var(--text); }
-    .btn { display:inline-flex; padding:10px 20px; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; transition:all 0.15s; background:var(--green); color:#fff; font-family:'Plus Jakarta Sans',sans-serif; }
-    .btn:hover { background:var(--green-dark); }
-    .page-hero { padding:64px 24px 48px; background:var(--bg-soft); border-bottom:1px solid var(--border); }
-    .page-hero-inner { max-width:760px; margin:0 auto; }
-    .page-hero h1 { font-size:40px; font-weight:800; color:var(--text); letter-spacing:-0.02em; margin-bottom:8px; }
-    .page-hero p { font-size:14px; color:var(--text-secondary); }
-    .content { max-width:760px; margin:0 auto; padding:60px 24px 80px; }
-    .content h2 { font-size:20px; font-weight:700; color:var(--text); margin:40px 0 12px; }
-    .content h2:first-of-type { margin-top:0; }
-    .content p { font-size:15px; color:var(--text-secondary); margin-bottom:16px; line-height:1.75; }
-    .content ul { margin:0 0 16px 20px; }
-    .content li { font-size:15px; color:var(--text-secondary); margin-bottom:8px; line-height:1.6; }
-    .content a { color:var(--green); text-decoration:none; }
-    .content a:hover { text-decoration:underline; }
-    .content strong { color:var(--text); font-weight:600; }
-    footer { padding:48px 24px 28px; border-top:1px solid var(--border); }
-    .footer-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-    .footer-links-row { display:flex; gap:24px; flex-wrap:wrap; }
-    .footer-links-row a { text-decoration:none; color:var(--text-secondary); font-size:14px; transition:color 0.15s; }
-    .footer-links-row a:hover { color:var(--text); }
-    .footer-copy { font-size:13px; color:var(--text-light); }
-    @media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--g:#00a67e;--gd:#007d5f;--gg:rgba(0,166,126,.15);--t:#111827;--t2:#374151;--tm:#6b7280;--tl:#9ca3af;--b:#e5e7eb;--bg:#fff;--bs:#f9fafb;--fd:'Outfit',sans-serif;--fb:'Instrument Sans',sans-serif}
+    body{font-family:var(--fb);background:var(--bg);color:var(--t);line-height:1.6;-webkit-font-smoothing:antialiased}
+    nav{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--b)}
+    .nav-i{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:var(--fd);font-size:20px;font-weight:800;color:var(--t);text-decoration:none;letter-spacing:-.5px;display:flex;align-items:center;gap:9px}
+    .ls{width:30px;height:30px;background:var(--g);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 8px var(--gg)}
+    .logo em{color:var(--g);font-style:normal}
+    .nl{display:flex;align-items:center;gap:28px;list-style:none}
+    .nl a{text-decoration:none;color:var(--tm);font-size:14px;font-weight:500;transition:color .15s}
+    .nl a:hover{color:var(--t)}
+    .btn{display:inline-flex;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;background:var(--g);color:#fff;font-family:var(--fb)}
+    .btn:hover{background:var(--gd)}
+    .hero{padding:60px 24px 44px;background:var(--bs);border-bottom:1px solid var(--b)}
+    .hero-i{max-width:760px;margin:0 auto}
+    .hero h1{font-family:var(--fd);font-size:40px;font-weight:800;color:var(--t);letter-spacing:-.02em;margin-bottom:8px}
+    .hero p{font-size:14px;color:var(--tm)}
+    .content{max-width:760px;margin:0 auto;padding:56px 24px 80px}
+    .content h2{font-family:var(--fd);font-size:20px;font-weight:700;color:var(--t);margin:40px 0 12px}
+    .content h2:first-of-type{margin-top:0}
+    .content p{font-size:15px;color:var(--tm);margin-bottom:16px;line-height:1.8}
+    .content ul{margin:0 0 16px 20px}
+    .content li{font-size:15px;color:var(--tm);margin-bottom:8px;line-height:1.65}
+    .content a{color:var(--g);text-decoration:none}
+    .content a:hover{text-decoration:underline}
+    .content strong{color:var(--t2);font-weight:600}
+    footer{padding:48px 24px 28px;border-top:1px solid var(--b)}
+    .fi{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .flr{display:flex;gap:24px;flex-wrap:wrap}
+    .flr a{text-decoration:none;color:var(--tm);font-size:14px;transition:color .15s}
+    .flr a:hover{color:var(--t)}
+    .fcopy{font-size:13px;color:var(--tl)}
+    @media(max-width:768px){nav{padding:0 16px}.nl{display:none}}
   </style>
 </head>
 <body>
-
 <nav>
-  <div class="nav-inner">
-    <a href="/" class="logo">Clear<span>Profit</span></a>
-    <ul class="nav-links">
-      <li><a href="/#features">Features</a></li>
-      <li><a href="/#action-center">Action Center</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="support.html">Support</a></li>
-    </ul>
-    <a href="https://apps.shopify.com/clearprofit" class="btn">Add to Shopify →</a>
+  <div class="nav-i">
+    <a href="/" class="logo"><div class="ls">🛡</div>Profit<em>Guard</em></a>
+    <ul class="nl"><li><a href="/#features">Features</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="support.html">Support</a></li></ul>
+    <a href="https://apps.shopify.com/profitguard" class="btn">Add to Shopify →</a>
   </div>
 </nav>
-
-<div class="page-hero">
-  <div class="page-hero-inner">
-    <h1>Terms of Service</h1>
-    <p>Last updated: 31 March 2026</p>
-  </div>
-</div>
-
+<div class="hero"><div class="hero-i"><h1>Terms of Service</h1><p>Last updated: 16 April 2026</p></div></div>
 <div class="content">
-
-  <h2>1. Agreement</h2>
-  <p>By installing or using ClearProfit ("the App"), you agree to these Terms of Service. The App is provided by Untapped B.V., a company registered in the Netherlands ("we", "us", "our").</p>
-
-  <h2>2. Description of service</h2>
-  <p>ClearProfit is a Shopify application that calculates real-time profit on every incoming order, automatically holds fulfillment for orders below a configurable margin threshold, integrates with ad platforms to include advertising costs in profit calculations, and sends automated email alerts and weekly P&amp;L summaries to configured recipients.</p>
-
-  <h2>3. Eligibility</h2>
-  <p>You must have an active Shopify store and agree to Shopify's Terms of Service to use ClearProfit. You must be at least 18 years old and authorized to enter into agreements on behalf of your business.</p>
-
-  <h2>4. Free trial and subscription</h2>
-  <p>ClearProfit offers a 14-day free trial with no credit card required. After the trial period:</p>
+  <h2>1. Agreement</h2><p>By installing or using ProfitGuard ("the App"), you agree to these Terms of Service. The App is provided by Untapped B.V., a company registered in the Netherlands ("we", "us", "our").</p>
+  <h2>2. Description of service</h2><p>ProfitGuard is a Shopify application that calculates real-time profit on every incoming order, automatically holds fulfillment for orders below a configurable margin threshold, integrates with ad platforms to include advertising costs in profit calculations, and sends automated email alerts and weekly P&L summaries.</p>
+  <h2>3. Eligibility</h2><p>You must have an active Shopify store and agree to Shopify's Terms of Service to use ProfitGuard. You must be at least 18 years old and authorised to enter into agreements on behalf of your business.</p>
+  <h2>4. Free trial and subscription</h2><p>ProfitGuard offers a 14-day free trial with no credit card required. After the trial period:</p>
   <ul>
     <li>A subscription of $29 USD per month is required to continue using the app</li>
     <li>Billing is processed by Shopify through their native billing system</li>
     <li>You may cancel your subscription at any time through your Shopify admin</li>
-    <li>No refunds are provided for partial billing periods</li>
+    <li>No refunds are provided for partial billing periods, except as covered by our 30-day money-back guarantee</li>
   </ul>
-
-  <h2>5. Fulfillment holds</h2>
-  <p>ClearProfit may place automatic holds on fulfillment orders based on your configured margin threshold. You acknowledge that:</p>
+  <h2>5. Money-back guarantee</h2><p>If ProfitGuard doesn't identify at least one unprofitable product or order in your first 30 days of use, contact us at <a href="mailto:info@untapped.nl">info@untapped.nl</a> and we will issue a full refund of any subscription charges paid.</p>
+  <h2>6. Fulfillment holds</h2><p>ProfitGuard may place automatic holds on fulfillment orders based on your configured margin threshold. You acknowledge that:</p>
   <ul>
     <li>Fulfillment holds may delay order processing and shipping</li>
     <li>You are responsible for reviewing and releasing or cancelling held orders in a timely manner</li>
-    <li>ClearProfit is not liable for any customer complaints, refund requests, or business losses arising from fulfillment delays caused by holds</li>
+    <li>ProfitGuard is not liable for any customer complaints, refund requests, or business losses arising from fulfillment delays caused by holds</li>
     <li>You are responsible for configuring hold thresholds appropriately for your business</li>
   </ul>
-
-  <h2>6. Ad platform integrations</h2>
-  <p>By connecting Meta Ads, Google Ads, or TikTok Ads, you authorize ClearProfit to access aggregated spend data from your ad accounts. You represent that you have the right to grant this access. You may disconnect any integration at any time from Settings.</p>
-
-  <h2>7. Acceptable use</h2>
-  <p>You agree to use ClearProfit only for lawful purposes. You must not:</p>
-  <ul>
-    <li>Attempt to reverse engineer, copy, or redistribute the App</li>
-    <li>Use the App in any way that could damage, disable, or impair our services</li>
-    <li>Attempt to gain unauthorized access to our systems</li>
-    <li>Use the App to process orders for illegal goods or services</li>
-  </ul>
-
-  <h2>8. Data accuracy</h2>
-  <p>ClearProfit calculates profit based on the data you provide (COGS, fee settings, shipping costs) and data pulled from Shopify and connected ad platforms. Profit calculations are estimates and may not reflect your actual accounting profit. You are responsible for verifying the accuracy of your settings and should not rely solely on ClearProfit for financial decisions.</p>
-
-  <h2>9. Service availability</h2>
-  <p>We aim to maintain high availability but do not guarantee uninterrupted service. Webhook processing may be delayed during maintenance windows or infrastructure issues. Shopify retries failed webhooks for 48 hours, and ClearProfit implements catch-up processing to minimize missed orders.</p>
-
-  <h2>10. Limitation of liability</h2>
-  <p>To the maximum extent permitted by applicable law, Untapped B.V. shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the App, including but not limited to lost profits, lost revenue, or business interruption. Our total liability for any claim shall not exceed the amount you paid us in the three months preceding the claim.</p>
-
-  <h2>11. Disclaimer of warranties</h2>
-  <p>ClearProfit is provided "as is" without warranties of any kind, express or implied. We do not warrant that the App will be error-free, uninterrupted, or that profit calculations will be 100% accurate.</p>
-
-  <h2>12. Termination</h2>
-  <p>You may terminate your use of ClearProfit at any time by uninstalling the App from your Shopify store. We may suspend or terminate your access if you violate these Terms. Upon termination, your data will be deleted in accordance with our Privacy Policy.</p>
-
-  <h2>13. Changes to terms</h2>
-  <p>We may update these Terms from time to time. We will notify you of significant changes through the App. Continued use of ClearProfit after changes constitutes acceptance of the updated Terms.</p>
-
-  <h2>14. Governing law</h2>
-  <p>These Terms are governed by the laws of the Netherlands. Any disputes shall be resolved in the courts of Amsterdam, Netherlands.</p>
-
-  <h2>15. Contact</h2>
-  <p>For questions about these Terms, contact us at:<br>
-  <a href="mailto:info@untapped.nl">info@untapped.nl</a><br>
-  Untapped B.V., Amsterdam, Netherlands</p>
-
+  <h2>7. Ad platform integrations</h2><p>By connecting Meta Ads, Google Ads, or TikTok Ads, you authorise ProfitGuard to access aggregated spend data from your ad accounts. You represent that you have the right to grant this access. You may disconnect any integration at any time from Settings.</p>
+  <h2>8. Acceptable use</h2><p>You agree not to: reverse engineer, copy, or redistribute the App; use it in any way that damages or impairs our services; attempt to gain unauthorised access to our systems; or use the App to process orders for illegal goods or services.</p>
+  <h2>9. Data accuracy</h2><p>ProfitGuard calculates profit based on the data you provide (COGS, fee settings, shipping costs) and data pulled from Shopify and connected ad platforms. Profit calculations are estimates and may not reflect your actual accounting profit. You are responsible for verifying the accuracy of your settings and should not rely solely on ProfitGuard for financial decisions.</p>
+  <h2>10. Service availability</h2><p>We aim to maintain high availability but do not guarantee uninterrupted service. Shopify retries failed webhooks for 48 hours, and ProfitGuard implements catch-up processing to minimise missed orders.</p>
+  <h2>11. Limitation of liability</h2><p>To the maximum extent permitted by applicable law, Untapped B.V. shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the App. Our total liability for any claim shall not exceed the amount you paid us in the three months preceding the claim.</p>
+  <h2>12. Disclaimer of warranties</h2><p>ProfitGuard is provided "as is" without warranties of any kind, express or implied. We do not warrant that the App will be error-free, uninterrupted, or that profit calculations will be 100% accurate.</p>
+  <h2>13. Termination</h2><p>You may terminate your use of ProfitGuard at any time by uninstalling the App from your Shopify store. We may suspend or terminate your access if you violate these Terms. Upon termination, your data will be deleted in accordance with our Privacy Policy.</p>
+  <h2>14. Changes to terms</h2><p>We may update these Terms from time to time. We will notify you of significant changes through the App. Continued use of ProfitGuard after changes constitutes acceptance of the updated Terms.</p>
+  <h2>15. Governing law</h2><p>These Terms are governed by the laws of the Netherlands. Any disputes shall be resolved in the courts of Amsterdam, Netherlands.</p>
+  <h2>16. Contact</h2><p><a href="mailto:info@untapped.nl">info@untapped.nl</a><br>Untapped B.V., Amsterdam, Netherlands</p>
 </div>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-copy">© 2026 Untapped B.V. All rights reserved.</div>
-    <div class="footer-links-row">
-      <a href="/">Home</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="support.html">Support</a>
-      <a href="privacy.html">Privacy</a>
-    </div>
-  </div>
-</footer>
-
+<footer><div class="fi"><div class="fcopy">© 2026 Untapped B.V. All rights reserved.</div><div class="flr"><a href="/">Home</a><a href="pricing.html">Pricing</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a></div></div></footer>
 </body>
 </html>

@@ -1,239 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Support — ClearProfit for Shopify</title>
-  <meta name="description" content="ClearProfit support — get help with setup, COGS, fulfillment holds, ad integrations, loss attribution, and more.">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — ProfitGuard for Shopify</title>
+  <meta name="description" content="ProfitGuard support — setup, COGS, fulfillment holds, ad integrations, Shopify Flow, and more.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --green:#00a67e; --green-dark:#007d5f; --green-light:#e6f7f2; --green-mid:#b3e8d8; --text:#111827; --text-secondary:#6b7280; --text-light:#9ca3af; --border:#e5e7eb; --bg:#ffffff; --bg-soft:#f9fafb; --bg-green:#f0fdf8; }
-    body { font-family:'Plus Jakarta Sans',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; }
-    nav { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); padding:0 40px; }
-    .nav-inner { max-width:1100px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; height:64px; }
-    .logo { font-size:18px; font-weight:800; color:var(--text); text-decoration:none; }
-    .logo span { color:var(--green); }
-    .nav-links { display:flex; align-items:center; gap:28px; list-style:none; }
-    .nav-links a { text-decoration:none; color:var(--text-secondary); font-size:14px; font-weight:500; transition:color 0.15s; }
-    .nav-links a:hover { color:var(--text); }
-    .btn { display:inline-flex; align-items:center; gap:6px; padding:10px 20px; border-radius:8px; font-size:14px; font-weight:600; text-decoration:none; transition:all 0.15s; background:var(--green); color:#fff; font-family:'Plus Jakarta Sans',sans-serif; }
-    .btn:hover { background:var(--green-dark); }
-    .page-hero { padding:72px 24px 56px; background:var(--bg-soft); border-bottom:1px solid var(--border); text-align:center; }
-    .section-label { font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green); margin-bottom:12px; }
-    .page-hero h1 { font-size:clamp(32px,5vw,52px); font-weight:800; color:var(--text); letter-spacing:-0.02em; margin-bottom:14px; }
-    .page-hero p { font-size:17px; color:var(--text-secondary); max-width:440px; margin:0 auto; }
-    .contact-section { max-width:1000px; margin:0 auto; padding:72px 24px 0; }
-    .contact-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-bottom:72px; }
-    @media(max-width:640px){.contact-grid{grid-template-columns:1fr;}}
-    .contact-card { border:1px solid var(--border); border-radius:12px; padding:28px; text-align:center; background:var(--bg-soft); }
-    .contact-card .icon { font-size:32px; margin-bottom:14px; }
-    .contact-card h3 { font-size:16px; font-weight:700; color:var(--text); margin-bottom:8px; }
-    .contact-card p { font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:16px; }
-    .contact-card a { color:var(--green); font-weight:600; font-size:14px; text-decoration:none; }
-    .contact-card a:hover { text-decoration:underline; }
-    .faq-section { max-width:760px; margin:0 auto; padding:0 24px 80px; }
-    .faq-group { margin-bottom:48px; }
-    .faq-group-title { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--green); margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid var(--green-mid); }
-    .faq-item { border-bottom:1px solid var(--border); padding:20px 0; }
-    .faq-item h3 { font-size:16px; font-weight:700; color:var(--text); margin-bottom:8px; }
-    .faq-item p { font-size:14px; color:var(--text-secondary); line-height:1.7; }
-    .faq-item a { color:var(--green); }
-    footer { padding:48px 24px 28px; border-top:1px solid var(--border); }
-    .footer-inner { max-width:1100px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
-    .footer-links-row { display:flex; gap:24px; flex-wrap:wrap; }
-    .footer-links-row a { text-decoration:none; color:var(--text-secondary); font-size:14px; transition:color 0.15s; }
-    .footer-links-row a:hover { color:var(--text); }
-    .footer-copy { font-size:13px; color:var(--text-light); }
-    @media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--g:#00a67e;--gd:#007d5f;--gl:#e8f9f3;--gm:#a8e8d4;--gg:rgba(0,166,126,.15);--or:#dd6b20;--t:#111827;--t2:#374151;--tm:#6b7280;--tl:#9ca3af;--b:#e5e7eb;--bg:#fff;--bs:#f9fafb;--bgreen:#f0fdf8;--ss:0 1px 3px rgba(0,0,0,.08);--s:0 4px 16px rgba(0,0,0,.08);--fd:'Outfit',sans-serif;--fb:'Instrument Sans',sans-serif}
+    body{font-family:var(--fb);background:var(--bg);color:var(--t);line-height:1.6;-webkit-font-smoothing:antialiased}
+    nav{position:sticky;top:0;z-index:900;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--b)}
+    .nav-i{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:var(--fd);font-size:20px;font-weight:800;color:var(--t);text-decoration:none;letter-spacing:-.5px;display:flex;align-items:center;gap:9px}
+    .ls{width:30px;height:30px;background:var(--g);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 8px var(--gg)}
+    .logo em{color:var(--g);font-style:normal}
+    .nl{display:flex;align-items:center;gap:28px;list-style:none}
+    .nl a{text-decoration:none;color:var(--tm);font-size:14px;font-weight:500;transition:color .15s}
+    .nl a:hover{color:var(--t)}
+    .btn{display:inline-flex;align-items:center;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:all .18s;background:var(--g);color:#fff;font-family:var(--fb)}
+    .btn:hover{background:var(--gd)}
+    .hero{padding:64px 24px 48px;text-align:center;background:linear-gradient(180deg,var(--bgreen) 0%,#fff 60%);border-bottom:1px solid var(--b)}
+    .seclbl{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:12px}
+    h1{font-family:var(--fd);font-size:clamp(32px,5vw,52px);font-weight:900;color:var(--t);letter-spacing:-.02em;margin-bottom:14px}
+    .hero p{font-size:17px;color:var(--tm);max-width:440px;margin:0 auto}
+    .content{max-width:1000px;margin:0 auto;padding:64px 24px 0}
+    .cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:72px}
+    @media(max-width:640px){.cgrid{grid-template-columns:1fr}}
+    .ccard{border:1px solid var(--b);border-radius:14px;padding:28px;text-align:center;background:var(--bs);box-shadow:var(--ss)}
+    .ccard .ico{font-size:32px;margin-bottom:14px}
+    .ccard h3{font-family:var(--fd);font-size:16px;font-weight:700;color:var(--t);margin-bottom:8px}
+    .ccard p{font-size:14px;color:var(--tm);line-height:1.65;margin-bottom:16px}
+    .ccard a{color:var(--g);font-weight:600;font-size:14px;text-decoration:none}
+    .ccard a:hover{text-decoration:underline}
+    .faq{max-width:760px;margin:0 auto;padding:0 24px 80px}
+    .faqgrp{margin-bottom:48px}
+    .faqgrp-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--g);margin-bottom:16px;padding-bottom:12px;border-bottom:2px solid var(--gm)}
+    .faqitem{border-bottom:1px solid var(--b);padding:20px 0}
+    .faqitem h3{font-size:15px;font-weight:600;color:var(--t);margin-bottom:8px}
+    .faqitem p{font-size:14px;color:var(--tm);line-height:1.75}
+    .faqitem a{color:var(--g);text-decoration:none}
+    .faqitem a:hover{text-decoration:underline}
+    footer{padding:48px 24px 28px;border-top:1px solid var(--b)}
+    .fi{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+    .flr{display:flex;gap:24px;flex-wrap:wrap}
+    .flr a{text-decoration:none;color:var(--tm);font-size:14px;transition:color .15s}
+    .flr a:hover{color:var(--t)}
+    .fcopy{font-size:13px;color:var(--tl)}
+    @media(max-width:768px){nav{padding:0 16px}.nl{display:none}}
   </style>
 </head>
 <body>
-
 <nav>
-  <div class="nav-inner">
-    <a href="/" class="logo">Clear<span>Profit</span></a>
-    <ul class="nav-links">
+  <div class="nav-i">
+    <a href="/" class="logo"><div class="ls">🛡</div>Profit<em>Guard</em></a>
+    <ul class="nl">
       <li><a href="/#features">Features</a></li>
       <li><a href="/#action-center">Action Center</a></li>
       <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="support.html" style="color:var(--green)">Support</a></li>
+      <li><a href="support.html" style="color:var(--g)">Support</a></li>
     </ul>
-    <a href="https://apps.shopify.com/clearprofit" class="btn">Add to Shopify →</a>
+    <a href="https://apps.shopify.com/profitguard" class="btn">Add to Shopify →</a>
   </div>
 </nav>
 
-<section class="page-hero">
-  <div class="section-label">Support</div>
+<section class="hero">
+  <div class="seclbl">Support</div>
   <h1>How can we help?</h1>
   <p>We typically respond within one business day. Based in Amsterdam (CET timezone).</p>
 </section>
 
-<section class="contact-section">
-  <div class="contact-grid">
-    <div class="contact-card">
-      <div class="icon">✉️</div>
-      <h3>Email support</h3>
-      <p>Send us your question and we'll get back to you within one business day.</p>
-      <a href="mailto:info@untapped.nl">info@untapped.nl</a>
-    </div>
-    <div class="contact-card">
-      <div class="icon">⭐</div>
-      <h3>Leave a review</h3>
-      <p>Happy with ClearProfit? A review helps other merchants discover the app.</p>
-      <a href="https://apps.shopify.com/clearprofit/reviews">Write a review →</a>
-    </div>
-    <div class="contact-card">
-      <div class="icon">🐛</div>
-      <h3>Report a bug</h3>
-      <p>Found something not working? Let us know and we'll fix it fast.</p>
-      <a href="mailto:info@untapped.nl?subject=Bug report — ClearProfit">Report a bug →</a>
-    </div>
-  </div>
-
-  <div class="faq-section">
-    <div class="faq-group">
-      <div class="faq-group-title">Getting started</div>
-      <div class="faq-item">
-        <h3>How do I install ClearProfit?</h3>
-        <p>Install from the Shopify App Store. ClearProfit will sync your product costs from Shopify automatically on first install. The onboarding wizard walks you through setting up transaction fees, alert thresholds, and fulfillment hold settings.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How long does the initial setup take?</h3>
-        <p>About 5 minutes. The onboarding wizard guides you through every step: COGS check, transaction fees, margin thresholds, and ad integrations.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Where does ClearProfit get my product costs?</h3>
-        <p>From Shopify's native "Cost per item" field on every product variant. If you've already filled in these fields in Shopify, ClearProfit syncs them automatically on install. You can also override costs manually or upload them via CSV on the Products page.</p>
-      </div>
-    </div>
-
-    <div class="faq-group">
-      <div class="faq-group-title">Action Center &amp; loss attribution</div>
-      <div class="faq-item">
-        <h3>What is the Action Center?</h3>
-        <p>The Action Center is the main section of your ClearProfit dashboard. Instead of showing you raw numbers, it tells you what to fix — sorted by profit impact. Each item shows which product is causing the most losses, which cost is dominant (ads, COGS, shipping, or fees), the total loss amount, and an estimated amount you could recover if fixed.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How does loss attribution work?</h3>
-        <p>ClearProfit analyzes every unprofitable order and calculates how much each cost type contributed to the loss — proportionally, not as flat totals. For example, if ads account for 71% of total costs on a loss order, ads get 71% of the loss attribution. This is then aggregated across all loss orders for the week, and the dominant cost source is identified per product. The result is a specific, actionable insight: <em>"Nike Air Max is losing money mainly due to ads (71%)."</em></p>
-      </div>
-      <div class="faq-item">
-        <h3>Why does the Action Center show "Low confidence"?</h3>
-        <p>Confidence is based on the number of data points. If you only have 1–2 loss orders for a product, the attribution might not be reliable yet. High confidence requires 3+ orders showing the same pattern. Low confidence items still appear — they're just labeled so you know to treat them as early signals, not confirmed root causes.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can I dismiss Action Center items?</h3>
-        <p>Yes. Each item has a "Snooze 24h" button. The item disappears for 24 hours and reappears the next day if the underlying issue persists. This is useful if you're already aware of an issue and working on fixing it.</p>
-      </div>
-    </div>
-
-    <div class="faq-group">
-      <div class="faq-group-title">Fulfillment holds</div>
-      <div class="faq-item">
-        <h3>How does the automatic fulfillment hold work?</h3>
-        <p>When an order comes in, ClearProfit calculates the net profit in real time. If the margin falls below your configured threshold, it places a hold on the fulfillment order via Shopify's API — before the order is shipped. You can release or cancel the hold from the dashboard.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How do I set the hold threshold?</h3>
-        <p>Go to Settings → Fulfillment Hold and enter a margin percentage. For example, setting 10% means any order with a net margin below 10% will be held automatically. Set to 0 to only hold orders that are actually losing money.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can I release a held order?</h3>
-        <p>Yes. Go to the Dashboard, find the order under "Held Orders", and click Release. The fulfillment hold is removed and Shopify can proceed with shipping.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What if the hold doesn't apply in time?</h3>
-        <p>ClearProfit processes the order webhook within seconds of the order being placed. For most stores, the hold is applied before the fulfillment system picks it up. For very fast fulfillment workflows, contact us to discuss your setup.</p>
-      </div>
-    </div>
-
-    <div class="faq-group">
-      <div class="faq-group-title">COGS &amp; profit calculation</div>
-      <div class="faq-item">
-        <h3>What costs are included in the profit calculation?</h3>
-        <p>Revenue minus: COGS (cost of goods), transaction fees (% + fixed), shipping cost, allocated ad spend for the day, discounts, and recurring expenses. All configurable in Settings.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What happens if a product is missing a cost price?</h3>
-        <p>The variant is counted as €0 COGS in the calculation, which inflates profit. ClearProfit flags these in the Action Center as a "Data health" item, shows the estimated impact on profit accuracy, and links directly to the Products page to fix them.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can I override the COGS for a specific variant?</h3>
-        <p>Yes. Go to Products, find the variant, and enter a custom cost. This override takes priority over the Shopify-synced cost and won't be overwritten by future Shopify updates.</p>
-      </div>
-    </div>
-
-    <div class="faq-group">
-      <div class="faq-group-title">Alerts &amp; weekly P&amp;L</div>
-      <div class="faq-item">
-        <h3>When do I receive email alerts?</h3>
-        <p>Immediately when an order falls below your configured margin threshold. The email includes the order name, revenue, net profit, and a breakdown of the main cost drivers. You can add multiple email addresses in Settings → Alerts.</p>
-      </div>
-      <div class="faq-item">
-        <h3>What is the weekly P&amp;L summary?</h3>
-        <p>Every Monday morning, ClearProfit sends a summary of the previous week: total revenue, net profit, average margin, number of unprofitable orders, and your top 3 loss orders. It's designed to land in your inbox before you open your dashboard — so you already know what to focus on.</p>
-      </div>
-    </div>
-
-    <div class="faq-group">
-      <div class="faq-group-title">Ad integrations</div>
-      <div class="faq-item">
-        <h3>How does ad spend allocation work?</h3>
-        <p>ClearProfit pulls your total daily ad spend from Meta, Google, and TikTok. It then allocates that spend proportionally across all orders for that day, based on each order's share of daily revenue. So if your daily revenue is $1,000 and an order is worth $100, it gets 10% of that day's ad spend.</p>
-      </div>
-      <div class="faq-item">
-        <h3>How do I connect Meta Ads?</h3>
-        <p>Go to Settings → Ad Integrations → Connect Meta Ads. You'll be redirected to Facebook to authorize the connection. Select your ad account and you're done. ClearProfit will sync the last 30 days of spend automatically.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can I sync ad spend manually?</h3>
-        <p>Yes. In Settings → Ad Integrations, each connected platform has a "Sync now" button that pulls the latest 30 days of spend data immediately.</p>
-      </div>
-    </div>
-
-    <div class="faq-group">
-      <div class="faq-group-title">Shopify Flow</div>
-      <div class="faq-item">
-        <h3>How do I use ClearProfit with Shopify Flow?</h3>
-        <p>ClearProfit adds a Flow trigger called "Order profit calculated" that fires after every order. It exposes fields like margin percentage, net profit, and whether the order is a loss. You can use these to build custom automations — for example, sending a Slack notification when margin drops below 5%.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Does ClearProfit have a Flow action too?</h3>
-        <p>Yes. There's a "Hold order for review" Flow action that lets you trigger a fulfillment hold from any Flow workflow, not just margin-based ones.</p>
-      </div>
-    </div>
-
-    <div class="faq-group">
-      <div class="faq-group-title">Billing &amp; cancellation</div>
-      <div class="faq-item">
-        <h3>Can I cancel my subscription?</h3>
-        <p>Yes, at any time. Go to Shopify admin → Settings → Billing → Apps, find ClearProfit, and cancel. No notice period required.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Will my data be deleted if I uninstall?</h3>
-        <p>Your data is stored securely. If you reinstall within 48 hours, all data will be intact. After 48 hours, data is permanently deleted in compliance with Shopify's GDPR requirements.</p>
-      </div>
-      <div class="faq-item">
-        <h3>I have a feature request. Where do I send it?</h3>
-        <p>Email <a href="mailto:info@untapped.nl">info@untapped.nl</a> — we read every message. Many features have come directly from merchant feedback.</p>
-      </div>
-    </div>
+<section class="content">
+  <div class="cgrid">
+    <div class="ccard"><div class="ico">✉️</div><h3>Email support</h3><p>Send us your question and we'll get back to you within one business day.</p><a href="mailto:info@untapped.nl">info@untapped.nl</a></div>
+    <div class="ccard"><div class="ico">⭐</div><h3>Leave a review</h3><p>Happy with ProfitGuard? A review helps other merchants discover the app.</p><a href="https://apps.shopify.com/profitguard/reviews">Write a review →</a></div>
+    <div class="ccard"><div class="ico">🐛</div><h3>Report a bug</h3><p>Found something not working? Let us know and we'll fix it fast.</p><a href="mailto:info@untapped.nl?subject=Bug report — ProfitGuard">Report a bug →</a></div>
   </div>
 </section>
 
+<div class="faq">
+  <div class="faqgrp">
+    <div class="faqgrp-title">Getting started</div>
+    <div class="faqitem"><h3>How do I install ProfitGuard?</h3><p>Install from the Shopify App Store. ProfitGuard will sync your product costs from Shopify automatically on first install. The onboarding wizard walks you through setting up transaction fees, alert thresholds, and fulfillment hold settings.</p></div>
+    <div class="faqitem"><h3>How long does the initial setup take?</h3><p>About 2–5 minutes. The onboarding wizard guides you through every step: COGS check, transaction fees, margin thresholds, and ad integrations.</p></div>
+    <div class="faqitem"><h3>Where does ProfitGuard get my product costs?</h3><p>From Shopify's native "Cost per item" field on every product variant. If you've already filled in these fields in Shopify, ProfitGuard syncs them automatically on install. You can also override costs manually or upload them via CSV on the Products page.</p></div>
+  </div>
+  <div class="faqgrp">
+    <div class="faqgrp-title">Action Center &amp; loss attribution</div>
+    <div class="faqitem"><h3>What is the Action Center?</h3><p>The Action Center is the main section of your ProfitGuard dashboard. Instead of showing raw numbers, it tells you what to fix — sorted by profit impact. Each item shows which product is causing the most losses, which cost is dominant (ads, COGS, shipping, or fees), the total loss amount, and an estimated recovery amount if fixed.</p></div>
+    <div class="faqitem"><h3>How does loss attribution work?</h3><p>ProfitGuard analyses every unprofitable order and calculates how much each cost type contributed proportionally. For example, if COGS account for 97% of total costs on a loss order, COGS get 97% of the attribution. This is aggregated across all loss orders for the week, giving you a specific, actionable insight: "Jordan 1 Retro is losing money mainly due to product cost (97%)."</p></div>
+    <div class="faqitem"><h3>Can I dismiss Action Center items?</h3><p>Yes. Each item has a dismiss button. The item disappears for 24 hours and reappears the next day if the underlying issue persists.</p></div>
+  </div>
+  <div class="faqgrp">
+    <div class="faqgrp-title">Fulfillment holds</div>
+    <div class="faqitem"><h3>How does the automatic fulfillment hold work?</h3><p>When an order comes in, ProfitGuard calculates the net profit in real time via Shopify's webhook. If the margin falls below your configured threshold, it places a hold on the fulfillment order via Shopify's API — before the order is shipped. You can release or cancel the hold from the dashboard in one click.</p></div>
+    <div class="faqitem"><h3>How do I set the hold threshold?</h3><p>Go to Settings → Fulfillment Hold and enter a margin percentage. Setting 5% means any order with a net margin below 5% will be held automatically. Set to 0 to only hold orders that are actually losing money (negative margin).</p></div>
+    <div class="faqitem"><h3>Can I release a held order?</h3><p>Yes. Go to the Dashboard, find the order under "Held Orders", and click Release. The fulfillment hold is removed and Shopify can proceed with shipping.</p></div>
+    <div class="faqitem"><h3>What if the hold doesn't apply in time?</h3><p>ProfitGuard processes the order webhook within seconds of the order being placed. For most stores, the hold is applied before the fulfillment system picks it up. For very fast fulfillment workflows (under 30 seconds), contact us to discuss your setup.</p></div>
+  </div>
+  <div class="faqgrp">
+    <div class="faqgrp-title">COGS &amp; profit calculation</div>
+    <div class="faqitem"><h3>What costs are included in the profit calculation?</h3><p>Revenue minus: COGS (cost of goods), transaction fees (% + fixed fee), shipping cost, allocated ad spend for the day, discounts, and your pro-rated recurring expenses. All configurable in Settings.</p></div>
+    <div class="faqitem"><h3>What happens if a product is missing a cost price?</h3><p>The variant is counted as $0 COGS in the calculation, which inflates profit. ProfitGuard flags these in the Action Center as a "Data health" item, shows the estimated impact on profit accuracy, and links directly to the Products page to fix them.</p></div>
+    <div class="faqitem"><h3>Can I override the COGS for a specific variant?</h3><p>Yes. Go to Products, find the variant, and enter a custom cost. This override takes priority over the Shopify-synced cost and is preserved — it won't be overwritten by future Shopify updates or product syncs.</p></div>
+    <div class="faqitem"><h3>How are refunds and cancellations handled?</h3><p>ProfitGuard listens to Shopify's order update webhook. When a refund or cancellation is detected, the order's revenue and COGS are automatically adjusted to reflect the actual final amounts. No manual action required.</p></div>
+  </div>
+  <div class="faqgrp">
+    <div class="faqgrp-title">Ad integrations</div>
+    <div class="faqitem"><h3>How does ad spend allocation work?</h3><p>ProfitGuard pulls your total daily ad spend from Meta, Google, and TikTok. It then allocates that spend proportionally across all orders for that day, based on each order's share of daily revenue. So if your daily revenue is $1,000 and one order is worth $100, that order gets 10% of the day's ad spend.</p></div>
+    <div class="faqitem"><h3>How do I connect Meta Ads?</h3><p>Go to Settings → Ad Integrations → Connect Meta Ads. You'll be redirected to Facebook to authorise the connection. Select your ad account and you're done. ProfitGuard will sync the last 30 days of spend automatically.</p></div>
+    <div class="faqitem"><h3>Can I sync ad spend manually?</h3><p>Yes. In Settings → Ad Integrations, each connected platform has a "Sync now" button that pulls the latest 30 days of spend data immediately.</p></div>
+  </div>
+  <div class="faqgrp">
+    <div class="faqgrp-title">Shopify Flow</div>
+    <div class="faqitem"><h3>How do I use ProfitGuard with Shopify Flow?</h3><p>ProfitGuard adds a Flow trigger called "Order profit calculated" that fires after every order. It exposes fields like margin percentage, net profit, and whether the order is a loss. Use these to build custom automations — for example, sending a Slack notification when margin drops below 5%, or tagging orders for manual review.</p></div>
+    <div class="faqitem"><h3>Does ProfitGuard have a Flow action too?</h3><p>Yes. There's a "Hold order for review" Flow action that lets you trigger a fulfillment hold from any Flow workflow, not just margin-based ones.</p></div>
+  </div>
+  <div class="faqgrp">
+    <div class="faqgrp-title">Expenses</div>
+    <div class="faqitem"><h3>How do recurring expenses work?</h3><p>Add any recurring cost (rent, subscriptions, agency fees) in Settings → Expenses with a monthly amount. ProfitGuard pro-rates this daily across your P&L — so a €40/month expense is deducted as €1.31/day from your net profit. This means a 7-day date range shows €9.17 in expenses, not the full €40.</p></div>
+    <div class="faqitem"><h3>Can I import expenses via CSV?</h3><p>Yes. Use the Import CSV button on the Expenses page. The format is: Name, Amount, Interval (monthly/weekly/yearly/one_time), Currency (optional).</p></div>
+  </div>
+  <div class="faqgrp">
+    <div class="faqgrp-title">Billing &amp; cancellation</div>
+    <div class="faqitem"><h3>Can I cancel my subscription?</h3><p>Yes, at any time. Go to Shopify admin → Settings → Billing → Apps, find ProfitGuard, and cancel. No notice period required.</p></div>
+    <div class="faqitem"><h3>Will my data be deleted if I uninstall?</h3><p>Your data is stored securely. If you reinstall within 48 hours, all data will be intact. After 48 hours, data is permanently deleted in compliance with Shopify's GDPR requirements.</p></div>
+    <div class="faqitem"><h3>I have a feature request. Where do I send it?</h3><p>Email <a href="mailto:info@untapped.nl">info@untapped.nl</a> — we read every message. Many features in ProfitGuard came directly from merchant feedback.</p></div>
+  </div>
+</div>
+
 <footer>
-  <div class="footer-inner">
-    <div class="footer-copy">© 2026 Untapped B.V. All rights reserved.</div>
-    <div class="footer-links-row">
-      <a href="/">Home</a>
-      <a href="pricing.html">Pricing</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="terms.html">Terms</a>
-    </div>
+  <div class="fi">
+    <div class="fcopy">© 2026 Untapped B.V. All rights reserved.</div>
+    <div class="flr"><a href="/">Home</a><a href="pricing.html">Pricing</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
   </div>
 </footer>
-
 </body>
 </html>

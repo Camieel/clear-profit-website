@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProfitGuard — Live Demo · Sneaker Shop Amsterdam</title>
+  <meta name="description" content="Interactive demo of ProfitGuard. Explore the real app with dummy store data — no signup required.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --g:#00a67e;--gd:#007d5f;--gl:#e8f9f3;--gm:#a8e8d4;--gg:rgba(0,166,126,.15);
+      --red:#dc2626;--rl:#fef2f2;--or:#d97706;--ol:#fffbeb;
+      --t:#111827;--t2:#374151;--tm:#6b7280;--tl:#9ca3af;
+      --b:#e5e7eb;--b2:#d1d5db;--bg:#ffffff;--bs:#f9fafb;--bgreen:#f0fdf8;
+      --sidebar:#0f1923;--sidebar2:#1a2635;--stext:#94a3b8;--stext2:#cbd5e1;
+      --fd:'Outfit',sans-serif;--fb:'Instrument Sans',sans-serif
+    }
+    html,body{height:100%;overflow:hidden}
+    body{font-family:var(--fb);background:var(--bg);color:var(--t);-webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+
+    /* TOPBAR */
+    .topbar{background:var(--bg);border-bottom:1px solid var(--b);padding:0 20px;height:52px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;z-index:100}
+    .tb-left{display:flex;align-items:center;gap:16px}
+    .demo-badge{background:#fef3c7;border:1px solid #fde68a;color:#92400e;font-size:11px;font-weight:700;padding:4px 10px;border-radius:100px;letter-spacing:.04em}
+    .tb-logo{font-family:var(--fd);font-size:17px;font-weight:800;color:var(--t);text-decoration:none;display:flex;align-items:center;gap:7px}
+    .tb-ls{width:24px;height:24px;background:var(--g);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px}
+    .tb-logo em{color:var(--g);font-style:normal}
+    .tb-store{font-size:13px;color:var(--tm);padding:4px 10px;background:var(--bs);border:1px solid var(--b);border-radius:6px;font-weight:500}
+    .tb-right{display:flex;align-items:center;gap:10px}
+    .tb-cta{font-family:var(--fb);font-size:13px;font-weight:700;background:var(--g);color:#fff;padding:7px 16px;border-radius:7px;text-decoration:none;display:flex;align-items:center;gap:5px}
+    .tb-cta:hover{background:var(--gd)}
+    .tb-back{font-size:13px;color:var(--tm);text-decoration:none;font-weight:500}
+    .tb-back:hover{color:var(--t)}
+
+    /* LAYOUT */
+    .layout{display:flex;flex:1;overflow:hidden}
+
+    /* SIDEBAR */
+    .sidebar{width:220px;background:var(--sidebar);flex-shrink:0;overflow-y:auto;padding:16px 0}
+    .sb-section{padding:0 8px;margin-bottom:4px}
+    .sb-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#475569;padding:8px 10px 4px;display:block}
+    .sb-item{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:7px;cursor:pointer;color:var(--stext);font-size:13px;font-weight:500;text-decoration:none;transition:all .15s;margin-bottom:1px}
+    .sb-item:hover{background:var(--sidebar2);color:var(--stext2)}
+    .sb-item.act{background:rgba(0,166,126,.15);color:var(--g);font-weight:700}
+    .sb-item .ico{width:18px;text-align:center;font-size:14px;flex-shrink:0}
+    .sb-item .badge{margin-left:auto;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:1px 6px;border-radius:100px}
+    .sb-item .badge.g{background:var(--g)}
+    .sb-item .badge.o{background:var(--or)}
+
+    /* MAIN */
+    .main{flex:1;overflow-y:auto;background:var(--bs)}
+    .page{display:none;padding:24px;max-width:1200px}
+    .page.act{display:block}
+
+    /* PAGE HEADER */
+    .ph{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+    .ph-title{font-family:var(--fd);font-size:22px;font-weight:800;color:var(--t);letter-spacing:-.02em}
+    .ph-sub{font-size:13px;color:var(--tm);margin-top:3px}
+    .ph-actions{display:flex;gap:8px;align-items:center}
+
+    /* DATE PICKER */
+    .datepicker{display:flex;gap:3px;background:var(--bg);border:1px solid var(--b);border-radius:8px;padding:3px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+    .dp-opt{padding:5px 12px;font-size:12px;font-weight:600;border-radius:5px;cursor:pointer;color:var(--tm);transition:all .15s}
+    .dp-opt.act{background:var(--t);color:#fff}
+    .dp-opt:hover:not(.act){background:var(--bs)}
+    .dp-range{font-size:11px;color:var(--tl);margin-left:8px;align-self:center}
+
+    /* KPI STRIP */
+    .kpis{display:grid;gap:12px;margin-bottom:16px}
+    .kpis.cols5{grid-template-columns:repeat(5,1fr)}
+    .kpis.cols4{grid-template-columns:repeat(4,1fr)}
+    .kpis.cols3{grid-template-columns:repeat(3,1fr)}
+    @media(max-width:900px){.kpis.cols5{grid-template-columns:repeat(3,1fr)}}
+    .kpi{background:var(--bg);border:1px solid var(--b);border-radius:10px;padding:14px 16px}
+    .kpi-l{font-size:10px;color:var(--tl);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px;font-weight:600}
+    .kpi-v{font-family:var(--fd);font-size:22px;font-weight:800;color:var(--t);letter-spacing:-.02em;display:flex;align-items:baseline;gap:4px}
+    .kpi-v.g{color:var(--g)} .kpi-v.r{color:var(--red)}
+    .kpi-v .unit{font-size:13px;font-weight:500;color:var(--tm)}
+    .kpi-t{font-size:11px;color:var(--tl);margin-top:3px;display:flex;align-items:center;gap:4px}
+    .kpi-t.up{color:var(--g)} .kpi-t.dn{color:var(--red)}
+
+    /* CARDS */
+    .card{background:var(--bg);border:1px solid var(--b);border-radius:12px;overflow:hidden;margin-bottom:16px}
+    .card-h{padding:14px 16px;border-bottom:1px solid var(--b);display:flex;align-items:center;justify-content:space-between;background:var(--bg)}
+    .card-ht{font-size:13px;font-weight:700;color:var(--t2)}
+    .card-hsub{font-size:11px;color:var(--tl)}
+    .card-b{padding:16px}
+
+    /* ALERT BANNER */
+    .alert{border-radius:10px;padding:12px 16px;margin-bottom:14px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+    .alert.crit{background:#fef2f2;border:1px solid #fecaca}
+    .alert.warn{background:var(--ol);border:1px solid #fde68a}
+    .alert.info{background:#eff6ff;border:1px solid #bfdbfe}
+    .alert.success{background:var(--gl);border:1px solid var(--gm)}
+    .alert-left{display:flex;align-items:flex-start;gap:10px}
+    .alert-dot{width:8px;height:8px;border-radius:50%;margin-top:4px;flex-shrink:0}
+    .alert-dot.r{background:var(--red)} .alert-dot.o{background:var(--or)} .alert-dot.g{background:var(--g)}
+    .alert-title{font-size:13px;font-weight:700;color:var(--t);margin-bottom:2px}
+    .alert-desc{font-size:12px;color:var(--tm);line-height:1.5}
+    .alert-right{display:flex;gap:8px;align-items:center;flex-shrink:0}
+    .alert-btn{font-size:12px;font-weight:700;padding:6px 14px;border-radius:6px;cursor:pointer;border:none;font-family:var(--fb)}
+    .alert-btn.g{background:var(--g);color:#fff}
+    .alert-btn.r{background:var(--red);color:#fff}
+    .alert-btn.o{background:var(--or);color:#fff}
+    .alert-btn.ghost{background:transparent;color:var(--tm);border:1px solid var(--b)}
+
+    /* ACTION CENTER ITEMS */
+    .ac-item{border-radius:10px;padding:14px 16px;border:1px solid;margin-bottom:10px}
+    .ac-item.crit{background:#fef2f2;border-color:#fecaca}
+    .ac-item.warn{background:var(--ol);border-color:#fde68a}
+    .ac-item.info{background:#eff6ff;border-color:#bfdbfe}
+    .ac-row{display:flex;align-items:flex-start;gap:12px}
+    .ac-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+    .ac-icon.r{background:#fee2e2} .ac-icon.y{background:#fef3c7} .ac-icon.b{background:#dbeafe}
+    .ac-title{font-size:13px;font-weight:700;color:var(--t);line-height:1.4;margin-bottom:4px}
+    .ac-desc{font-size:12px;color:var(--tm);line-height:1.55;margin-bottom:10px}
+    .ac-recover{color:var(--g);font-weight:600}
+    .ac-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .ac-loss{font-size:12px;color:var(--red);font-weight:700}
+    .ac-rec{font-size:12px;color:var(--g);font-weight:700}
+    .ac-time{font-size:11px;background:rgba(0,0,0,.06);padding:2px 7px;border-radius:4px;color:var(--tm)}
+    .ac-btn{font-size:12px;background:var(--g);color:#fff;padding:6px 14px;border-radius:6px;font-weight:700;border:none;cursor:pointer;font-family:var(--fb)}
+    .ac-btn.o{background:var(--or)}
+    .ac-btn.ghost{background:transparent;color:var(--tm);border:1px solid var(--b)}
+
+    /* TABLES */
+    .tbl-wrap{overflow-x:auto}
+    table{width:100%;border-collapse:collapse;font-size:13px;min-width:600px}
+    th{text-align:left;padding:9px 12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--tl);border-bottom:2px solid var(--b);background:var(--bs);white-space:nowrap}
+    th.sortable{cursor:pointer;user-select:none}
+    th.sortable:hover{color:var(--t2)}
+    td{padding:10px 12px;border-bottom:1px solid var(--b);color:var(--t2);vertical-align:middle}
+    tr:last-child td{border-bottom:none}
+    tr.loss td{background:#fffafa}
+    tr.held td{background:#fffbeb}
+    tr:hover:not(.loss):not(.held) td{background:#fafafa}
+    .ord-link{color:var(--g);font-weight:700;cursor:pointer;text-decoration:none}
+    .ord-link:hover{text-decoration:underline}
+    .profit-pos{color:var(--g);font-weight:700}
+    .profit-neg{color:var(--red);font-weight:700}
+    .tag{display:inline-flex;align-items:center;padding:3px 9px;border-radius:100px;font-size:11px;font-weight:700;white-space:nowrap}
+    .tag.hold{background:#fef3c7;color:#92400e}
+    .tag.ok{background:var(--gl);color:var(--gd)}
+    .tag.ref{background:#f3f4f6;color:var(--tm)}
+    .tag.crit{background:#fee2e2;color:#c53030}
+    .tag.miss{background:#fef3c7;color:#92400e}
+    .tag.info{background:#dbeafe;color:#1e40af}
+    .top-cost{font-size:11px;display:flex;align-items:center;gap:4px}
+    .top-cost-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+    /* ALLOC BAR */
+    .alloc-bar{height:12px;border-radius:6px;overflow:hidden;display:flex;gap:2px;margin-bottom:8px}
+    .alloc-legend{display:flex;gap:14px;flex-wrap:wrap}
+    .alloc-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--tm)}
+    .alloc-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+    /* CHART */
+    .chart-wrap{padding:16px;background:var(--bs);border-radius:8px;margin-bottom:16px}
+    .chart-bars{display:flex;align-items:flex-end;gap:5px;height:80px}
+    .bar-group{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px}
+    .bar{width:100%;border-radius:3px 3px 0 0;transition:height .8s ease;cursor:pointer;min-height:2px}
+    .bar:hover{opacity:.8}
+    .bar-lbl{font-size:9px;color:var(--tl)}
+
+    /* PRODUCT GRID */
+    .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:16px}
+    .pcard{background:var(--bg);border:1px solid var(--b);border-radius:10px;padding:16px;transition:box-shadow .15s;cursor:pointer}
+    .pcard:hover{box-shadow:0 4px 16px rgba(0,0,0,.08)}
+    .pcard-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
+    .pcard-name{font-size:14px;font-weight:700;color:var(--t);line-height:1.3}
+    .pcard-tag{font-size:11px;font-weight:700;padding:2px 8px;border-radius:100px}
+    .pcard-stats{display:flex;flex-direction:column;gap:6px}
+    .pcard-row{display:flex;justify-content:space-between;font-size:12px}
+    .pcard-row .lbl{color:var(--tl)}
+    .pcard-row .val{font-weight:700;color:var(--t2)}
+    .pcard-row .val.g{color:var(--g)}
+    .pcard-row .val.r{color:var(--red)}
+    .pcard-bar-wrap{margin-top:8px}
+    .pcard-bar-bg{height:4px;background:var(--b);border-radius:2px;overflow:hidden}
+    .pcard-bar-fill{height:100%;border-radius:2px;transition:width .6s ease}
+
+    /* EXPENSES */
+    .exp-total{display:flex;gap:12px;margin-bottom:16px}
+    .exp-kpi{flex:1;background:var(--bg);border:1px solid var(--b);border-radius:10px;padding:14px 16px}
+    .exp-kpi-l{font-size:10px;color:var(--tl);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px;font-weight:600}
+    .exp-kpi-v{font-family:var(--fd);font-size:22px;font-weight:800;color:var(--t)}
+    .exp-kpi-v.r{color:var(--red)}
+
+    /* ADS */
+    .ads-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+    .ad-card{background:var(--bg);border:1px solid var(--b);border-radius:10px;padding:16px}
+    .ad-card.connected{border-color:var(--gm);background:var(--bgreen)}
+    .ad-card.disconnected{border-style:dashed}
+    .ad-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .ad-card-name{font-size:14px;font-weight:700;color:var(--t)}
+    .ad-card-status{font-size:11px;font-weight:700;padding:3px 9px;border-radius:100px}
+    .ad-card-status.conn{background:var(--gl);color:var(--gd)}
+    .ad-card-status.disc{background:#f3f4f6;color:var(--tm)}
+    .ad-card-stat{font-size:12px;color:var(--tm);margin-bottom:4px}
+    .ad-card-val{font-family:var(--fd);font-size:18px;font-weight:800;color:var(--t);margin-bottom:10px}
+    .ad-btn{font-size:12px;font-weight:700;padding:7px 14px;border-radius:6px;cursor:pointer;border:none;font-family:var(--fb);width:100%}
+    .ad-btn.conn{background:var(--bs);color:var(--tm);border:1px solid var(--b)}
+    .ad-btn.disc{background:var(--g);color:#fff}
+
+    /* SETTINGS */
+    .settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media(max-width:768px){.settings-grid{grid-template-columns:1fr}}
+    .setting-group{background:var(--bg);border:1px solid var(--b);border-radius:12px;padding:20px}
+    .setting-group h3{font-family:var(--fd);font-size:15px;font-weight:700;color:var(--t);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--b)}
+    .setting-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--b)}
+    .setting-row:last-child{border-bottom:none}
+    .setting-lbl{font-size:13px;color:var(--t2);font-weight:500}
+    .setting-sub{font-size:11px;color:var(--tl);margin-top:2px}
+    .setting-input{font-size:13px;padding:6px 10px;border:1px solid var(--b);border-radius:6px;font-family:var(--fb);color:var(--t);background:var(--bg);width:120px;text-align:right}
+    .setting-input:focus{outline:none;border-color:var(--g)}
+    .toggle{width:36px;height:20px;border-radius:100px;cursor:pointer;transition:background .2s;position:relative;flex-shrink:0}
+    .toggle.on{background:var(--g)}
+    .toggle.off{background:var(--b2)}
+    .toggle::after{content:'';position:absolute;top:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+    .toggle.on::after{left:18px}
+    .toggle.off::after{left:2px}
+
+    /* FILTERS */
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;align-items:center}
+    .filter-select{font-size:12px;padding:6px 10px;border:1px solid var(--b);border-radius:6px;color:var(--t2);background:var(--bg);font-family:var(--fb);cursor:pointer}
+    .filter-select:focus{outline:none;border-color:var(--g)}
+    .filter-badge{font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;cursor:pointer;color:var(--tm);background:var(--bg);border:1px solid var(--b);transition:all .15s}
+    .filter-badge.act{background:var(--t);color:#fff;border-color:var(--t)}
+
+    /* LOSS SUMMARY BAR */
+    .loss-bar{background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:14px 16px;margin-bottom:14px}
+    .loss-bar-title{font-size:14px;font-weight:700;color:var(--red);margin-bottom:4px}
+    .loss-bar-sub{font-size:12px;color:var(--red);opacity:.8}
+    .loss-bar-orders{margin-top:10px;display:flex;flex-direction:column;gap:4px}
+    .loss-order-row{display:flex;justify-content:space-between;font-size:12px;color:var(--tm)}
+    .loss-order-row strong{color:var(--t2)}
+
+    /* PERF LEADERBOARD */
+    .leaderboard{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+    @media(max-width:768px){.leaderboard{grid-template-columns:1fr}}
+    .lb-card{background:var(--bg);border:1px solid var(--b);border-radius:10px;padding:14px 16px}
+    .lb-card-title{font-size:12px;font-weight:700;color:var(--tm);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+    .lb-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--b)}
+    .lb-item:last-child{border-bottom:none}
+    .lb-rank{font-family:var(--fd);font-size:14px;font-weight:800;color:var(--tl);width:20px;text-align:center;flex-shrink:0}
+    .lb-name{font-size:13px;font-weight:600;color:var(--t2);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .lb-val{font-size:13px;font-weight:800;flex-shrink:0}
+    .lb-val.g{color:var(--g)} .lb-val.r{color:var(--red)}
+
+    /* HELD ORDERS PANEL */
+    .held-panel{background:#fffbeb;border:1px solid #fde68a;border-radius:10px;padding:14px 16px;margin-bottom:14px}
+    .held-panel-title{font-size:13px;font-weight:700;color:#92400e;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+    .held-item{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #fde68a}
+    .held-item:last-child{border-bottom:none}
+    .held-item-left .hn{font-size:12px;font-weight:700;color:var(--t2)}
+    .held-item-left .hd{font-size:11px;color:var(--tm)}
+    .held-item-right{display:flex;align-items:center;gap:8px}
+    .held-margin{font-size:12px;color:var(--red);font-weight:700}
+    .held-btn{font-size:11px;font-weight:700;padding:5px 12px;border-radius:6px;cursor:pointer;border:none;font-family:var(--fb)}
+    .held-btn.release{background:var(--g);color:#fff}
+    .held-btn.cancel{background:transparent;color:var(--tm);border:1px solid var(--b)}
+
+    /* SCROLLBAR */
+    .main::-webkit-scrollbar{width:5px}
+    .main::-webkit-scrollbar-track{background:transparent}
+    .main::-webkit-scrollbar-thumb{background:var(--b2);border-radius:3px}
+    .sidebar::-webkit-scrollbar{width:3px}
+    .sidebar::-webkit-scrollbar-thumb{background:#2a3a4e}
+
+    /* TOOLTIP DEMO NOTE */
+    .demo-note{background:#1e293b;color:#94a3b8;font-size:11px;padding:6px 12px;border-radius:6px;display:inline-flex;align-items:center;gap:5px}
+
+    /* ONBOARDING DISMISSED */
+    #onboarding{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;display:flex;align-items:center;justify-content:center}
+    .ob-card{background:#fff;border-radius:16px;padding:40px;max-width:480px;width:100%;margin:20px;text-align:center;box-shadow:0 40px 80px rgba(0,0,0,.2)}
+    .ob-icon{font-size:48px;margin-bottom:16px}
+    .ob-title{font-family:var(--fd);font-size:24px;font-weight:800;color:var(--t);margin-bottom:8px;letter-spacing:-.02em}
+    .ob-sub{font-size:15px;color:var(--tm);line-height:1.65;margin-bottom:28px}
+    .ob-features{text-align:left;margin-bottom:28px;display:flex;flex-direction:column;gap:10px}
+    .ob-feat{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--t2)}
+    .ob-feat .obi{width:28px;height:28px;border-radius:7px;background:var(--gl);border:1px solid var(--gm);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+    .ob-btn{width:100%;font-family:var(--fd);font-size:15px;font-weight:800;background:var(--g);color:#fff;border:none;padding:14px;border-radius:10px;cursor:pointer;transition:background .15s}
+    .ob-btn:hover{background:var(--gd)}
+    .ob-note{font-size:12px;color:var(--tl);margin-top:12px}
+  </style>
+</head>
+<body>
+
+<!-- ONBOARDING MODAL -->
+<div id="onboarding">
+  <div class="ob-card">
+    <div class="ob-icon">🛡</div>
+    <div class="ob-title">Welcome to ProfitGuard</div>
+    <div class="ob-sub">This is a live interactive demo with a fictional Shopify sneaker store. Explore all features with real dummy data — no account needed.</div>
+    <div class="ob-features">
+      <div class="ob-feat"><div class="obi">🛑</div><span>See automatic fulfillment holds in action</span></div>
+      <div class="ob-feat"><div class="obi">🎯</div><span>Browse the Action Center with loss attribution</span></div>
+      <div class="ob-feat"><div class="obi">📊</div><span>Explore orders, products, expenses, and ads</span></div>
+      <div class="ob-feat"><div class="obi">⚡</div><span>Check Shopify Flow connector settings</span></div>
+    </div>
+    <button class="ob-btn" onclick="document.getElementById('onboarding').style.display='none'">Explore the demo →</button>
+    <div class="ob-note">No signup required · All data is fictional · <a href="https://apps.shopify.com/profitguard" style="color:var(--g);font-weight:600">Install the real app →</a></div>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="tb-left">
+    <a href="/" class="tb-logo"><div class="tb-ls">🛡</div>Profit<em>Guard</em></a>
+    <div class="demo-badge">⚡ LIVE DEMO</div>
+    <div class="tb-store">📦 Sneaker Shop Amsterdam</div>
+  </div>
+  <div class="tb-right">
+    <a href="/" class="tb-back">← Back to site</a>
+    <a href="https://apps.shopify.com/profitguard" class="tb-cta">Add to my Shopify →</a>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sb-section">
+      <span class="sb-label">Overview</span>
+      <a class="sb-item act" onclick="nav('dashboard')"><span class="ico">📊</span> Dashboard</a>
+      <a class="sb-item" onclick="nav('action')"><span class="ico">⚡</span> Action Center <span class="badge">3</span></a>
+    </div>
+    <div class="sb-section">
+      <span class="sb-label">Data</span>
+      <a class="sb-item" onclick="nav('orders')"><span class="ico">📦</span> Orders</a>
+      <a class="sb-item" onclick="nav('products')"><span class="ico">👟</span> Products</a>
+      <a class="sb-item" onclick="nav('expenses')"><span class="ico">🗓</span> Expenses</a>
+      <a class="sb-item" onclick="nav('ads')"><span class="ico">📢</span> Ads</a>
+    </div>
+    <div class="sb-section">
+      <span class="sb-label">Config</span>
+      <a class="sb-item" onclick="nav('settings')"><span class="ico">⚙️</span> Settings</a>
+    </div>
+    <div style="padding:16px 12px;margin-top:auto">
+      <div class="demo-note">📌 Demo data only</div>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main">
+
+    <!-- ══════════════════ DASHBOARD ══════════════════ -->
+    <div class="page act" id="page-dashboard">
+      <div class="ph">
+        <div><div class="ph-title">Dashboard</div><div class="ph-sub">Sneaker Shop Amsterdam · Last updated just now</div></div>
+        <div class="ph-actions">
+          <div class="datepicker">
+            <div class="dp-opt" onclick="setDate(this,'Today')">Today</div>
+            <div class="dp-opt" onclick="setDate(this,'7d')">7 days</div>
+            <div class="dp-opt act" onclick="setDate(this,'30d')">30 days</div>
+            <div class="dp-opt" onclick="setDate(this,'90d')">90 days</div>
+          </div>
+          <span class="dp-range" id="dash-range">Mar 17 → Apr 16, 2026</span>
+        </div>
+      </div>
+
+      <!-- Action required -->
+      <div class="alert crit">
+        <div class="alert-left">
+          <div class="alert-dot r"></div>
+          <div>
+            <div class="alert-title">Action required · 3 issues found — last 7 days</div>
+            <div class="alert-desc">"Jordan 1 Retro" is losing money (COGS 97%) · 2 orders on hold · 24 variants missing cost data</div>
+          </div>
+        </div>
+        <div class="alert-right">
+          <button class="alert-btn g" onclick="nav('action')">View Action Center →</button>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpis cols5">
+        <div class="kpi"><div class="kpi-l">Net Profit</div><div class="kpi-v g">$3,925</div><div class="kpi-t up">↑ 12% vs prev</div></div>
+        <div class="kpi"><div class="kpi-l">Revenue</div><div class="kpi-v">$13,456</div><div class="kpi-t">vs prev period</div></div>
+        <div class="kpi"><div class="kpi-l">Avg Margin</div><div class="kpi-v">24.1%</div><div class="kpi-t">vs prev period</div></div>
+        <div class="kpi"><div class="kpi-l">On Hold</div><div class="kpi-v r">2</div><div class="kpi-t dn">awaiting review</div></div>
+        <div class="kpi"><div class="kpi-l">Ad Spend</div><div class="kpi-v">$1,240</div><div class="kpi-t">9.2% of revenue</div></div>
+      </div>
+
+      <!-- Revenue allocation -->
+      <div class="card">
+        <div class="card-h"><div class="card-ht">Revenue Allocation</div><div class="card-hsub">Total: $13,456</div></div>
+        <div class="card-b">
+          <div class="alloc-bar">
+            <div style="width:56%;background:#f97316;height:100%;border-radius:3px 0 0 3px"></div>
+            <div style="width:3%;background:#6b7280;height:100%"></div>
+            <div style="width:8%;background:#94a3b8;height:100%"></div>
+            <div style="width:9%;background:#ef4444;height:100%"></div>
+            <div style="flex:1;background:#22c55e;height:100%;border-radius:0 3px 3px 0"></div>
+          </div>
+          <div class="alloc-legend">
+            <div class="alloc-item"><div class="alloc-dot" style="background:#f97316"></div>COGS 56.2% ($7,562)</div>
+            <div class="alloc-item"><div class="alloc-dot" style="background:#6b7280"></div>Fees 3.1% ($417)</div>
+            <div class="alloc-item"><div class="alloc-dot" style="background:#94a3b8"></div>Ad spend 8.5% ($1,144)</div>
+            <div class="alloc-item"><div class="alloc-dot" style="background:#ef4444"></div>Expenses 8.1% ($1,090)</div>
+            <div class="alloc-item"><div class="alloc-dot" style="background:#22c55e"></div>Cash in pocket 24.1% ($3,243)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profit chart + leaderboard -->
+      <div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:16px">
+        <div class="card" style="margin-bottom:0">
+          <div class="card-h"><div class="card-ht">Profit Stability — 30 days</div><div class="card-hsub" style="color:#ef4444;font-weight:700">1 loss day</div></div>
+          <div class="card-b">
+            <div class="chart-bars" id="dash-chart"></div>
+          </div>
+        </div>
+        <div>
+          <div class="leaderboard" style="margin-top:0;grid-template-columns:1fr">
+            <div class="lb-card">
+              <div class="lb-card-title">🏆 Top Performers</div>
+              <div class="lb-item"><div class="lb-rank">1</div><div class="lb-name">3p Fulfilled Snowboard</div><div class="lb-val g">+$2,555</div></div>
+              <div class="lb-item"><div class="lb-rank">2</div><div class="lb-name">Air Max 90 White</div><div class="lb-val g">+$975</div></div>
+              <div class="lb-item"><div class="lb-rank">3</div><div class="lb-name">Nike Dunk Low</div><div class="lb-val g">+$587</div></div>
+            </div>
+            <div class="lb-card">
+              <div class="lb-card-title">📉 Profit Leaks</div>
+              <div class="lb-item"><div class="lb-rank">1</div><div class="lb-name">Jordan 1 Retro High</div><div class="lb-val r">−$310</div></div>
+              <div class="lb-item"><div class="lb-rank">2</div><div class="lb-name">Yeezy 350 v2</div><div class="lb-val r">−$85</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Held orders + needs attention -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="card" style="margin-bottom:0">
+          <div class="card-h"><div class="card-ht">🔒 Held Orders</div><span class="tag hold">2 awaiting review</span></div>
+          <div class="card-b" style="padding:12px">
+            <div class="held-item">
+              <div class="held-item-left"><div class="hn">#1038 — Air Max 90 White</div><div class="hd">Margin -5.3% · held 2h ago</div></div>
+              <div class="held-item-right"><div class="held-margin">-5.3%</div><button class="held-btn release" onclick="releaseOrder('#1038')">Release</button><button class="held-btn cancel">Cancel</button></div>
+            </div>
+            <div class="held-item">
+              <div class="held-item-left"><div class="hn">#1031 — Jordan 1 Retro</div><div class="hd">Margin -15.1% · held 8h ago</div></div>
+              <div class="held-item-right"><div class="held-margin">-15.1%</div><button class="held-btn release" onclick="releaseOrder('#1031')">Release</button><button class="held-btn cancel">Cancel</button></div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:0">
+          <div class="card-h"><div class="card-ht">⚠️ Needs Attention</div><span class="tag hold" style="background:#fee2e2;color:#c53030">6 orders</span></div>
+          <div class="card-b" style="padding:0">
+            <table>
+              <thead><tr><th>Order</th><th>Net Profit</th><th>Top Cost</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr class="loss"><td><span class="ord-link" onclick="nav('orders')">#1031</span></td><td class="profit-neg">−$154.70</td><td><span class="top-cost"><span class="top-cost-dot" style="background:#f97316"></span>COGS</span></td><td><button class="held-btn release" style="font-size:10px;padding:3px 8px" onclick="nav('orders')">Review</button></td></tr>
+                <tr class="loss"><td><span class="ord-link" onclick="nav('orders')">#1036</span></td><td class="profit-neg">−$54.70</td><td><span class="top-cost"><span class="top-cost-dot" style="background:#f97316"></span>COGS</span></td><td><button class="held-btn release" style="font-size:10px;padding:3px 8px" onclick="nav('orders')">Review</button></td></tr>
+                <tr class="loss"><td><span class="ord-link" onclick="nav('orders')">#1037</span></td><td class="profit-neg">−$29.70</td><td><span class="top-cost"><span class="top-cost-dot" style="background:#6b7280"></span>Fees</span></td><td><button class="held-btn release" style="font-size:10px;padding:3px 8px" onclick="nav('orders')">Review</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════ ACTION CENTER ══════════════════ -->
+    <div class="page" id="page-action">
+      <div class="ph">
+        <div><div class="ph-title">Action Center</div><div class="ph-sub">Issues detected in the last 7 days — sorted by profit impact</div></div>
+      </div>
+      <div class="kpis cols5">
+        <div class="kpi"><div class="kpi-l">Open issues</div><div class="kpi-v">3</div></div>
+        <div class="kpi"><div class="kpi-l">Loss this week</div><div class="kpi-v r">$142.9</div></div>
+        <div class="kpi"><div class="kpi-l">Avg margin 7d</div><div class="kpi-v">25.8%</div></div>
+        <div class="kpi"><div class="kpi-l">Loss orders</div><div class="kpi-v r">4</div></div>
+        <div class="kpi"><div class="kpi-l">Saved by holds</div><div class="kpi-v g">~$209</div></div>
+      </div>
+      <div class="filters" style="margin-top:4px">
+        <div class="filter-badge act">All 3</div>
+        <div class="filter-badge">🔴 Critical 2</div>
+        <div class="filter-badge">⚠️ Warnings 1</div>
+        <div class="filter-badge">ℹ️ Info</div>
+      </div>
+      <div style="margin-top:4px;margin-bottom:12px;font-size:12px;color:var(--tl)">🔴 CRITICAL — FIX THESE FIRST</div>
+      <div class="ac-item crit">
+        <div class="ac-row">
+          <div class="ac-icon r">📢</div>
+          <div style="flex:1;min-width:0">
+            <div class="ac-title">"Jordan 1 Retro" is losing money mainly due to product cost (97%)</div>
+            <div class="ac-desc">4 orders unprofitable · 3 shipped without being held. Product costs are too high relative to selling price. Update cost price in ProfitGuard or raise the selling price in Shopify to break even. <span class="ac-recover">Potential recovery: ~$164.1/week.</span></div>
+            <div class="ac-meta">
+              <button class="ac-btn" onclick="nav('products')">Update cost price →</button>
+              <button class="ac-btn ghost" onclick="nav('orders')">View loss orders</button>
+              <span class="ac-loss">−$142.9 this week</span>
+              <span class="ac-rec">· Recover ~$164/wk</span>
+              <span class="ac-time">⏱ 10 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ac-item crit">
+        <div class="ac-row">
+          <div class="ac-icon r">🔒</div>
+          <div style="flex:1;min-width:0">
+            <div class="ac-title">2 orders on hold — cashflow blocked</div>
+            <div class="ac-desc">2 orders are currently held from fulfillment. Each hour of delay risks customer dissatisfaction. Review and release or cancel them now.</div>
+            <div class="ac-meta">
+              <button class="ac-btn" onclick="nav('dashboard')">Review held orders →</button>
+              <span class="ac-time">⏱ 2 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:4px;margin-bottom:12px;font-size:12px;color:var(--tl)">⚠️ WARNINGS — ADDRESS SOON</div>
+      <div class="ac-item warn">
+        <div class="ac-row">
+          <div class="ac-icon y">📦</div>
+          <div style="flex:1;min-width:0">
+            <div class="ac-title">24 product variants missing cost data</div>
+            <div class="ac-desc">Orders with missing COGS show inflated margins and may not trigger auto-holds correctly. Your profit figures may be overstated by ~$360/mo.</div>
+            <div class="ac-meta">
+              <button class="ac-btn o" onclick="nav('products')">Fix missing COGS →</button>
+              <span class="ac-time">⏱ 2 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding:12px 16px;background:var(--bs);border:1px solid var(--b);border-radius:8px;font-size:12px;color:var(--tl);text-align:center">
+        Dismissed items disappear for 24h and reappear automatically. Issues clear when the underlying problem is resolved.
+      </div>
+    </div>
+
+    <!-- ══════════════════ ORDERS ══════════════════ -->
+    <div class="page" id="page-orders">
+      <div class="ph">
+        <div><div class="ph-title">Orders</div><div class="ph-sub">30 days · Mar 17 → Apr 16, 2026</div></div>
+        <div class="ph-actions">
+          <div class="datepicker">
+            <div class="dp-opt" onclick="setDate(this,'Today')">Today</div>
+            <div class="dp-opt" onclick="setDate(this,'7d')">7 days</div>
+            <div class="dp-opt act" onclick="setDate(this,'30d')">30 days</div>
+            <div class="dp-opt" onclick="setDate(this,'90d')">90 days</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="loss-bar">
+        <div class="loss-bar-title">You lost $300.19 in this period</div>
+        <div class="loss-bar-sub">40% of orders (8) are unprofitable · 2.7% of your revenue is leaking</div>
+        <div class="loss-bar-orders">
+          <div class="loss-order-row"><strong>#1 #1031</strong><span style="color:var(--red);font-weight:700">−$154.70</span></div>
+          <div class="loss-order-row"><strong>#2 #1036</strong><span style="color:var(--red);font-weight:700">−$54.70</span></div>
+          <div class="loss-order-row"><strong>#3 #1038</strong><span style="color:var(--red);font-weight:700">−$54.70</span></div>
+        </div>
+      </div>
+
+      <div class="kpis cols4" style="margin-bottom:14px">
+        <div class="kpi"><div class="kpi-l">Revenue</div><div class="kpi-v">$13,456</div></div>
+        <div class="kpi"><div class="kpi-l">Net Profit</div><div class="kpi-v g">$4,088</div></div>
+        <div class="kpi"><div class="kpi-l">Avg Margin</div><div class="kpi-v">28.7%</div></div>
+        <div class="kpi"><div class="kpi-l">Refunded</div><div class="kpi-v r">3</div></div>
+      </div>
+
+      <div class="filters">
+        <select class="filter-select"><option>All statuses</option><option>Profitable</option><option>Loss orders</option><option>On Hold</option><option>Refunded</option></select>
+        <select class="filter-select"><option>All orders</option><option>Profitable only</option><option>Unprofitable only</option></select>
+        <select class="filter-select"><option>COGS: All</option><option>Missing COGS</option><option>Has COGS</option></select>
+        <select class="filter-select"><option>All reasons</option><option>COGS</option><option>Fees</option><option>Ad Spend</option></select>
+        <div style="margin-left:auto;font-size:12px;color:var(--tl)">Sorted: newest first · <span style="cursor:pointer;color:var(--g);font-weight:600">Show worst first</span></div>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Order</th><th>Date</th><th>Revenue</th><th>Discount</th><th>COGS</th><th>Fees</th><th>Shipping</th><th>Ad Spend</th><th>Net Profit</th><th>Margin</th><th>Top Cost</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><span class="ord-link">#1041</span></td><td>16 Apr</td><td>$24.95</td><td>—</td><td>$0.00 ⚠️</td><td>$1.20</td><td>$0.00</td><td>—</td><td class="profit-pos">$23.75</td><td>95.2%</td><td>—</td><td><span class="tag ok">OK</span></td></tr>
+              <tr><td><span class="ord-link">#1040</span></td><td>15 Apr</td><td>$1,025.00</td><td>—</td><td>$0.00 ⚠️</td><td>$29.70</td><td>$0.00</td><td>—</td><td class="profit-pos">$995.30</td><td>97.1%</td><td>—</td><td><span class="tag ok">OK</span></td></tr>
+              <tr class="held"><td><span class="ord-link">#1038</span></td><td>15 Apr</td><td>$1,025.00</td><td>—</td><td>$1,050.00</td><td>$29.70</td><td>$0.00</td><td>—</td><td class="profit-neg">−$54.70</td><td>-5.3%</td><td><span class="top-cost"><span class="top-cost-dot" style="background:#f97316"></span>COGS</span></td><td><span class="tag hold">On Hold</span></td></tr>
+              <tr class="loss"><td><span class="ord-link">#1037</span></td><td>15 Apr</td><td>$0.00</td><td>—</td><td>$0.00</td><td>$29.70</td><td>$0.00</td><td>—</td><td class="profit-neg">−$29.70</td><td>0.0%</td><td><span class="top-cost"><span class="top-cost-dot" style="background:#6b7280"></span>Fees</span></td><td><span class="tag ref">Refunded</span></td></tr>
+              <tr><td><span class="ord-link">#1036</span></td><td>15 Apr</td><td>$1,025.00</td><td>—</td><td>$1,050.00</td><td>$29.70</td><td>$0.00</td><td>—</td><td class="profit-neg">−$54.70</td><td>-5.3%</td><td><span class="top-cost"><span class="top-cost-dot" style="background:#f97316"></span>COGS</span></td><td><span class="tag crit">Loss</span></td></tr>
+              <tr><td><span class="ord-link">#1035</span></td><td>15 Apr</td><td>$1,025.00</td><td>—</td><td>$800.00</td><td>$29.70</td><td>$0.00</td><td>—</td><td class="profit-pos">$195.30</td><td>19.1%</td><td>—</td><td><span class="tag ok">OK</span></td></tr>
+              <tr><td><span class="ord-link">#1034</span></td><td>15 Apr</td><td>$1,025.00</td><td>—</td><td>$800.00</td><td>$29.70</td><td>$0.00</td><td>—</td><td class="profit-pos">$195.30</td><td>19.1%</td><td>—</td><td><span class="tag ok">OK</span></td></tr>
+              <tr><td><span class="ord-link">#1033</span></td><td>15 Apr</td><td>$1,025.00</td><td>—</td><td>$800.00</td><td>$29.70</td><td>$0.00</td><td>—</td><td class="profit-pos">$195.30</td><td>19.1%</td><td>—</td><td><span class="tag ok">OK</span></td></tr>
+              <tr class="held"><td><span class="ord-link">#1031</span></td><td>8 Apr</td><td>$1,025.00</td><td>—</td><td>$1,150.00</td><td>$29.70</td><td>$0.00</td><td>—</td><td class="profit-neg">−$154.70</td><td>-15.1%</td><td><span class="top-cost"><span class="top-cost-dot" style="background:#f97316"></span>COGS</span></td><td><span class="tag hold">On Hold</span></td></tr>
+              <tr><td><span class="ord-link">#1030</span></td><td>8 Apr</td><td>$27.00</td><td>−$3.00</td><td>$10.00</td><td>$1.76</td><td>$0.00</td><td>—</td><td class="profit-pos">$15.24</td><td>56.5%</td><td>—</td><td><span class="tag ok">OK</span></td></tr>
+              <tr><td><span class="ord-link">#1028</span></td><td>8 Apr</td><td>$2,629.95</td><td>—</td><td>$0.00 ⚠️</td><td>$74.64</td><td>$0.00</td><td>—</td><td class="profit-pos">$2,555.31</td><td>97%</td><td>—</td><td><span class="tag ok">OK</span></td></tr>
+              <tr class="loss"><td><span class="ord-link">#1027</span></td><td>5 Apr</td><td>$10.00</td><td>—</td><td>$12.00</td><td>$0.59</td><td>$0.00</td><td>—</td><td class="profit-neg">−$2.59</td><td>-25.9%</td><td><span class="top-cost"><span class="top-cost-dot" style="background:#f97316"></span>COGS</span></td><td><span class="tag crit">Loss</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:10px 14px;font-size:11px;color:var(--tl);border-top:1px solid var(--b)">1–12 of 15 orders · ⚠️ = incomplete COGS · <span style="color:var(--red);font-weight:600">6 loss orders · $300.19 lost</span></div>
+      </div>
+    </div>
+
+    <!-- ══════════════════ PRODUCTS ══════════════════ -->
+    <div class="page" id="page-products">
+      <div class="ph">
+        <div><div class="ph-title">Product Cost Prices</div><div class="ph-sub">Manage COGS per variant · From Shopify 🔒 · Your Cost ✏️ · Cost Used 🔒</div></div>
+        <div class="ph-actions">
+          <button class="alert-btn g" style="font-size:13px">+ Add manually</button>
+          <button class="alert-btn ghost" style="font-size:13px">Import CSV</button>
+          <button class="alert-btn ghost" style="font-size:13px">🔄 Sync Shopify</button>
+        </div>
+      </div>
+      <div class="alert warn">
+        <div class="alert-left"><div class="alert-dot o"></div><div><div class="alert-title">24 product variants missing cost data — margins may be overstated</div><div class="alert-desc">Without cost data, margins appear higher than they actually are. Set up cost prices to get accurate profit tracking and auto-holds.</div></div></div>
+        <div class="alert-right"><button class="alert-btn o">Set up product costs →</button></div>
+      </div>
+
+      <div style="margin-bottom:14px;padding:10px 14px;background:var(--bs);border:1px solid var(--b);border-radius:8px;font-size:12px;color:var(--tm);display:flex;align-items:center;justify-content:space-between">
+        <span>🔒 Auto-synced from Shopify &nbsp;·&nbsp; ✏️ Your Cost (editable, takes priority over Shopify) &nbsp;·&nbsp; 📊 Sell Price &amp; Margin auto-calculated</span>
+        <span style="color:var(--tl)">5 products · 15 units sold</span>
+      </div>
+
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Product / Variant</th><th>From Shopify 🔒</th><th>Your Cost ✏️</th><th>Cost Used 🔒</th><th>Sell Price 🔒</th><th>Margin 🔒</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td><div style="font-weight:700;font-size:13px;color:var(--t)">Jordan 1 Retro High OG</div><div style="font-size:11px;color:var(--tl)">Size 42 · Black/White</div></td><td>$1,150.00</td><td style="background:rgba(0,166,126,.04)"><input type="number" value="1150" style="font-size:12px;padding:4px 8px;border:1px solid var(--b);border-radius:5px;width:90px;color:var(--t);background:#fff;font-family:var(--fb)" /></td><td style="background:var(--bs)"><strong>$1,150.00</strong></td><td style="background:var(--bs)">$1,025.00</td><td class="profit-neg" style="background:var(--bs)">-12.2%</td><td><span class="tag crit">Loss</span></td></tr>
+              <tr><td><div style="font-weight:700;font-size:13px;color:var(--t)">Air Max 90 White</div><div style="font-size:11px;color:var(--tl)">Size 41 · White/Grey</div></td><td>$800.00</td><td style="background:rgba(0,166,126,.04)"><input type="number" value="800" style="font-size:12px;padding:4px 8px;border:1px solid var(--b);border-radius:5px;width:90px;color:var(--t);background:#fff;font-family:var(--fb)" /></td><td style="background:var(--bs)"><strong>$800.00</strong></td><td style="background:var(--bs)">$1,025.00</td><td class="profit-pos" style="background:var(--bs)">22.0%</td><td><span class="tag ok">OK</span></td></tr>
+              <tr><td><div style="font-weight:700;font-size:13px;color:var(--t)">Nike Dunk Low Panda</div><div style="font-size:11px;color:var(--tl)">Size 43 · Black/White</div></td><td>—</td><td style="background:rgba(0,166,126,.04)"><input type="number" placeholder="Enter cost" style="font-size:12px;padding:4px 8px;border:1px solid #fde68a;border-radius:5px;width:90px;color:var(--t);background:#fffbeb;font-family:var(--fb)" /></td><td style="background:var(--bs)"><span style="color:var(--or)">—</span></td><td style="background:var(--bs)">$189.00</td><td style="background:var(--bs);color:var(--or)">Unknown</td><td><span class="tag miss">Missing</span></td></tr>
+              <tr><td><div style="font-weight:700;font-size:13px;color:var(--t)">Yeezy 350 v2</div><div style="font-size:11px;color:var(--tl)">Size 44 · Zebra</div></td><td>$420.00</td><td style="background:rgba(0,166,126,.04)"><input type="number" value="420" style="font-size:12px;padding:4px 8px;border:1px solid var(--b);border-radius:5px;width:90px;color:var(--t);background:#fff;font-family:var(--fb)" /></td><td style="background:var(--bs)"><strong>$420.00</strong></td><td style="background:var(--bs)">$389.00</td><td class="profit-neg" style="background:var(--bs)">-8.0%</td><td><span class="tag crit">Loss</span></td></tr>
+              <tr><td><div style="font-weight:700;font-size:13px;color:var(--t)">New Balance 550</div><div style="font-size:11px;color:var(--tl)">Size 42 · White/Sea Salt</div></td><td>$95.00</td><td style="background:rgba(0,166,126,.04)"><input type="number" value="95" style="font-size:12px;padding:4px 8px;border:1px solid var(--b);border-radius:5px;width:90px;color:var(--t);background:#fff;font-family:var(--fb)" /></td><td style="background:var(--bs)"><strong>$95.00</strong></td><td style="background:var(--bs)">$145.00</td><td class="profit-pos" style="background:var(--bs)">34.5%</td><td><span class="tag ok">OK</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:10px 14px;border-top:1px solid var(--b);display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:11px;color:var(--tl)">Click ✏️ cells to edit. Changes saved automatically. Shopify 🔒 values sync daily.</span>
+          <button class="alert-btn g" style="font-size:12px">Save all changes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════ EXPENSES ══════════════════ -->
+    <div class="page" id="page-expenses">
+      <div class="ph">
+        <div><div class="ph-title">Recurring Expenses</div><div class="ph-sub">Fixed costs are pro-rated daily into your P&L</div></div>
+        <div class="ph-actions">
+          <button class="alert-btn g" style="font-size:13px">+ Add expense</button>
+          <button class="alert-btn ghost" style="font-size:13px">Import CSV</button>
+        </div>
+      </div>
+      <div class="kpis cols3" style="margin-bottom:16px">
+        <div class="kpi"><div class="kpi-l">Monthly overhead</div><div class="kpi-v r">€140.00</div><div class="kpi-t">Fixed monthly burn</div></div>
+        <div class="kpi"><div class="kpi-l">Yearly overhead</div><div class="kpi-v">€1,680.00</div><div class="kpi-t">Annual fixed costs</div></div>
+        <div class="kpi"><div class="kpi-l">Active expenses</div><div class="kpi-v">2</div><div class="kpi-t">All active</div></div>
+      </div>
+      <div class="alert info" style="margin-bottom:14px">
+        <div class="alert-left"><div class="alert-dot" style="background:#3b82f6"></div><div><div class="alert-title">Expenses are pro-rated daily into your P&L</div><div class="alert-desc">€140/month = €4.60/day. When viewing 7 days, €32.20 is deducted. When viewing 30 days, €138.10 is deducted. This is the industry standard (TrueProfit, Lifetimely).</div></div></div>
+      </div>
+      <div class="card">
+        <div class="tbl-wrap">
+          <table>
+            <thead><tr><th>Name</th><th>Amount</th><th>Interval</th><th>Monthly equiv.</th><th>Start date</th><th>Status</th><th>Actions</th></tr></thead>
+            <tbody>
+              <tr><td><div style="font-weight:700;font-size:13px;color:var(--t)">Test 100</div><div style="font-size:11px;color:var(--tl)">Click to edit</div></td><td>€100.00</td><td><span class="tag info">Monthly</span></td><td><strong>€100.00/mo</strong></td><td>15 Apr 2026</td><td><span class="tag ok">Active</span></td><td><button class="held-btn release" style="font-size:10px;padding:3px 8px">Pause</button> <button class="held-btn cancel" style="font-size:10px;padding:3px 8px;color:var(--red)">Delete</button></td></tr>
+              <tr><td><div style="font-weight:700;font-size:13px;color:var(--t)">Lightning</div><div style="font-size:11px;color:var(--tl)">Click to edit</div></td><td>€40.00</td><td><span class="tag info">Monthly</span></td><td><strong>€40.00/mo</strong></td><td>13 Apr 2026</td><td><span class="tag ok">Active</span></td><td><button class="held-btn release" style="font-size:10px;padding:3px 8px">Pause</button> <button class="held-btn cancel" style="font-size:10px;padding:3px 8px;color:var(--red)">Delete</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:10px 14px;border-top:1px solid var(--b);font-size:11px;color:var(--tl)">Expenses are deducted from Net Profit on the dashboard. Sorted by monthly impact — largest costs first.</div>
+      </div>
+    </div>
+
+    <!-- ══════════════════ ADS ══════════════════ -->
+    <div class="page" id="page-ads">
+      <div class="ph">
+        <div><div class="ph-title">Ad Integrations</div><div class="ph-sub">Daily ad spend is allocated proportionally across orders by revenue share</div></div>
+      </div>
+      <div class="alert info" style="margin-bottom:16px">
+        <div class="alert-left"><div class="alert-dot" style="background:#3b82f6"></div><div><div class="alert-title">How ad allocation works</div><div class="alert-desc">Total daily spend is pulled from each platform and distributed across all orders of that day based on revenue share. If daily revenue is $1,000 and an order is $100, it gets 10% of that day's ad spend.</div></div></div>
+      </div>
+      <div class="ads-grid">
+        <div class="ad-card connected">
+          <div class="ad-card-top"><div class="ad-card-name">🟦 Meta Ads</div><div class="ad-card-status conn">Connected</div></div>
+          <div class="ad-card-stat">Daily spend (yesterday)</div>
+          <div class="ad-card-val">$42.80</div>
+          <div class="ad-card-stat" style="margin-top:4px">Last synced: 2 min ago</div>
+          <button class="ad-btn conn" style="margin-top:12px">Manage connection</button>
+        </div>
+        <div class="ad-card connected">
+          <div class="ad-card-top"><div class="ad-card-name">🔴 Google Ads</div><div class="ad-card-status conn">Connected</div></div>
+          <div class="ad-card-stat">Daily spend (yesterday)</div>
+          <div class="ad-card-val">$31.20</div>
+          <div class="ad-card-stat" style="margin-top:4px">Last synced: 5 min ago</div>
+          <button class="ad-btn conn" style="margin-top:12px">Manage connection</button>
+        </div>
+        <div class="ad-card disconnected">
+          <div class="ad-card-top"><div class="ad-card-name">🎵 TikTok Ads</div><div class="ad-card-status disc">Not connected</div></div>
+          <div class="ad-card-stat" style="color:var(--tl)">Connect to include TikTok spend in profit calculations</div>
+          <div class="ad-card-val" style="color:var(--tl)">—</div>
+          <button class="ad-btn disc" onclick="alert('TikTok OAuth flow would start here. In the real app, you\'ll be redirected to TikTok to authorize.')" style="margin-top:12px">Connect TikTok Ads</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-h"><div class="card-ht">Ad spend by day — last 7 days</div></div>
+        <div class="card-b">
+          <table>
+            <thead><tr><th>Date</th><th>Meta Ads</th><th>Google Ads</th><th>TikTok</th><th>Total</th><th>% of revenue</th></tr></thead>
+            <tbody>
+              <tr><td>16 Apr</td><td>$42.80</td><td>$31.20</td><td>—</td><td><strong>$74.00</strong></td><td>7.2%</td></tr>
+              <tr><td>15 Apr</td><td>$38.50</td><td>$28.40</td><td>—</td><td><strong>$66.90</strong></td><td>12.9%</td></tr>
+              <tr><td>14 Apr</td><td>$0</td><td>$0</td><td>—</td><td><strong>$0</strong></td><td>—</td></tr>
+              <tr><td>13 Apr</td><td>$45.00</td><td>$32.00</td><td>—</td><td><strong>$77.00</strong></td><td>8.1%</td></tr>
+              <tr><td>12 Apr</td><td>$52.10</td><td>$29.80</td><td>—</td><td><strong>$81.90</strong></td><td>9.4%</td></tr>
+              <tr><td>11 Apr</td><td>$0</td><td>$0</td><td>—</td><td><strong>$0</strong></td><td>—</td></tr>
+              <tr><td>10 Apr</td><td>$41.20</td><td>$25.60</td><td>—</td><td><strong>$66.80</strong></td><td>7.8%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════ SETTINGS ══════════════════ -->
+    <div class="page" id="page-settings">
+      <div class="ph">
+        <div><div class="ph-title">Settings</div><div class="ph-sub">Configure profit thresholds, fees, alerts, and Shopify Flow</div></div>
+        <div class="ph-actions"><button class="alert-btn g" style="font-size:13px">Save all changes</button></div>
+      </div>
+      <div class="settings-grid">
+        <div class="setting-group">
+          <h3>💳 Transaction Fees</h3>
+          <div class="setting-row"><div><div class="setting-lbl">Shopify fee (%)</div><div class="setting-sub">Percentage charged per transaction</div></div><input type="number" class="setting-input" value="2.9" step="0.1" /></div>
+          <div class="setting-row"><div><div class="setting-lbl">Fixed fee per order</div><div class="setting-sub">Flat amount charged per transaction</div></div><input type="number" class="setting-input" value="0.30" step="0.01" /></div>
+        </div>
+        <div class="setting-group">
+          <h3>🛑 Fulfillment Hold</h3>
+          <div class="setting-row"><div><div class="setting-lbl">Hold threshold (%)</div><div class="setting-sub">Orders below this margin are held automatically</div></div><input type="number" class="setting-input" value="0" step="1" /></div>
+          <div class="setting-row"><div><div class="setting-lbl">Auto-hold enabled</div><div class="setting-sub">Automatically hold orders below threshold</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+          <div class="setting-row"><div><div class="setting-lbl">Notify on hold</div><div class="setting-sub">Send email when an order is held</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+        </div>
+        <div class="setting-group">
+          <h3>🔔 Email Alerts</h3>
+          <div class="setting-row"><div><div class="setting-lbl">Alert email</div><div class="setting-sub">Receive instant alerts for held orders</div></div><input type="email" class="setting-input" value="info@untapped.nl" style="width:200px;text-align:left" /></div>
+          <div class="setting-row"><div><div class="setting-lbl">Weekly P&L summary</div><div class="setting-sub">Every Monday morning</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+          <div class="setting-row"><div><div class="setting-lbl">Loss order alerts</div><div class="setting-sub">Instant email for unprofitable orders</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+        </div>
+        <div class="setting-group">
+          <h3>⚡ Shopify Flow</h3>
+          <div style="background:var(--gl);border:1px solid var(--gm);border-radius:8px;padding:12px;margin-bottom:12px;font-size:13px;color:var(--gd)">ProfitGuard publishes profit data as Flow triggers. Build automations based on margin, profit amount, or order hold status.</div>
+          <div class="setting-row"><div><div class="setting-lbl">Flow trigger active</div><div class="setting-sub">"Order profit calculated" trigger</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+          <div class="setting-row"><div><div class="setting-lbl">Trigger on hold</div><div class="setting-sub">Fire trigger when order is held</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+          <div style="margin-top:12px;font-size:12px;color:var(--tm)">Available trigger fields: <code style="background:var(--bs);padding:1px 5px;border-radius:4px;font-size:11px">margin_percentage</code> <code style="background:var(--bs);padding:1px 5px;border-radius:4px;font-size:11px">net_profit</code> <code style="background:var(--bs);padding:1px 5px;border-radius:4px;font-size:11px">is_loss</code> <code style="background:var(--bs);padding:1px 5px;border-radius:4px;font-size:11px">is_held</code></div>
+        </div>
+        <div class="setting-group">
+          <h3>🚚 Shipping Costs</h3>
+          <div class="setting-row"><div><div class="setting-lbl">Default shipping cost</div><div class="setting-sub">Used when carrier rate is unavailable</div></div><input type="number" class="setting-input" value="0.00" step="0.50" /></div>
+          <div class="setting-row"><div><div class="setting-lbl">Include in profit calc</div><div class="setting-sub">Deduct shipping from net profit</div></div><div class="toggle on" onclick="this.classList.toggle('on');this.classList.toggle('off')"></div></div>
+        </div>
+        <div class="setting-group">
+          <h3>🗄️ Data</h3>
+          <div class="setting-row"><div><div class="setting-lbl">Sync all products</div><div class="setting-sub">Re-sync COGS from Shopify</div></div><button class="alert-btn ghost" style="font-size:12px">Sync now</button></div>
+          <div class="setting-row"><div><div class="setting-lbl">Historical orders</div><div class="setting-sub">Backfill profit for past orders</div></div><button class="alert-btn ghost" style="font-size:12px">Backfill</button></div>
+          <div class="setting-row"><div><div class="setting-lbl">Export data</div><div class="setting-sub">Download all profit data as CSV</div></div><button class="alert-btn ghost" style="font-size:12px">Export CSV</button></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /layout -->
+
+<script>
+// Navigation
+function nav(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('act'));
+  document.querySelectorAll('.sb-item').forEach(s=>s.classList.remove('act'));
+  document.getElementById('page-'+page).classList.add('act');
+  var map={dashboard:0,action:1,orders:2,products:3,expenses:4,ads:5,settings:6};
+  document.querySelectorAll('.sb-item')[map[page]].classList.add('act');
+}
+
+// Date range labels
+var ranges={'Today':'Apr 16, 2026','7d':'Apr 10 → Apr 16, 2026','30d':'Mar 17 → Apr 16, 2026','90d':'Jan 17 → Apr 16, 2026'};
+function setDate(el, range){
+  el.closest('.datepicker').querySelectorAll('.dp-opt').forEach(d=>d.classList.remove('act'));
+  el.classList.add('act');
+  var rl=document.getElementById('dash-range');
+  if(rl)rl.textContent=ranges[range]||'';
+}
+
+// Build profit chart
+function buildChart(){
+  var c=document.getElementById('dash-chart');
+  if(!c||c.children.length>0)return;
+  var data=[0,120,0,195,85,0,390,195,0,145,280,195,0,320,-55,0,195,195,0,195,195,195,195,0,400,195,0,553,195,120];
+  var labels=['17M','','','','','','23M','','','','','','29M','','','','2A','','','','6A','','','','10A','','','','14A',''];
+  var max=Math.max.apply(null,data.map(d=>Math.abs(d)));
+  data.forEach(function(d,i){
+    var g=document.createElement('div');g.className='bar-group';
+    var b=document.createElement('div');b.className='bar';
+    b.style.background=d<0?'#dc2626':(d===0?'#e5e7eb':'#00a67e');
+    b.style.height='2px';b.style.opacity=d===0?'0.4':'1';
+    var l=document.createElement('div');l.className='bar-lbl';l.textContent=labels[i]||'';
+    g.appendChild(b);g.appendChild(l);c.appendChild(g);
+    setTimeout(function(){b.style.height=Math.max(max>0?Math.abs(d)/max*78:0,d!==0?3:1)+'px'},300+i*25);
+  });
+}
+buildChart();
+
+// Release order simulation
+function releaseOrder(id){
+  if(confirm('Release '+id+' from fulfillment hold?\n\nIn the real app, this immediately removes the hold in Shopify and allows the order to be fulfilled.')){
+    alert('✅ '+id+' released! In the real app, Shopify would now process fulfillment.');
+  }
+}
+
+// Filter badges toggle
+document.querySelectorAll('.filter-badge').forEach(function(b){
+  b.addEventListener('click',function(){
+    b.closest('.filters').querySelectorAll('.filter-badge').forEach(x=>x.classList.remove('act'));
+    b.classList.add('act');
+  });
+});
+</script>
+</body>
+</html>
